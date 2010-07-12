@@ -1,0 +1,7 @@
+
+Escrevendo coisas na tela >D
+
+pygame.font.init()
+fonte = pygame.font.Font("camilla.ttf",100)
+self.texto  = fonte.render("Joi",True,(255,255,255))
+        
