@@ -2,10 +2,12 @@ Data 14/07/2010:
 =======> Tarefas <=======
     Feitas:
     -> Teste condicional para que não haja um OKAY na caixa_tempo, se o tempo for nulo
-    ->
+    -> Finalização do método show da classe motor e teste condicinal para que não esteja
+       as duas opções ou nenhuma estiver selecionada(Para frente, parar) e que pelo menos
+       um motor esteja selecionado
+
 
     A fazer:
-    -> Terminar o show da classe caixa_motor, e testar se apenas uma das opcoes está clicada, e se alguma escolha tá clicada
     -> Adicão da caixa_led
     -> Adicao da caixa_toque
 
