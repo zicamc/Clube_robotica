@@ -291,8 +291,6 @@ class caixa_motor(caixa):
             pygame.draw.polygon(SCREEN, (0,0,0,0),
                             ((self.posicao[0]-posx+125,self.posicao[1]+25),(self.posicao[0]-posx+125,self.posicao[1]+75),
                             (self.posicao[0]-posx+150,self.posicao[1]+50)))
-            #pygame.display.update((self.posicao[0]-posx,self.posicao[1],300-posx,300))
-
         else:
             self.rect = 0
         """ """
