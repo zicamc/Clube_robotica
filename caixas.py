@@ -8,7 +8,24 @@ pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf",25)
 
-class caixa_inicio():
+class caixa():
+    def __init__(self):
+        pass
+    def troca_posicao(self, posicao):
+        pass
+    def troca_posicaox(self,posicao):
+        pass
+    def show(self, SCREEN, posx):
+        pass
+    def colide(self, pos):
+        pass
+
+    
+    def events(self, SCREEN, posx):
+        pass
+    def retorna_pos(self):
+        pass
+class caixa_inicio(caixa):
     def __init__(self):
         """
 
@@ -52,7 +69,7 @@ class caixa_inicio():
         """
         return 0
 
-class caixa_tempo():
+class caixa_tempo(caixa):
     def __init__(self):
         """
 
@@ -121,6 +138,9 @@ class caixa_tempo():
         8 - Limitação de execuções por segundo
         9 - 
         """
+
+        #BUG - Tempo em décimos só pode aceitar um dígito!
+
         SCREEN.blit(self.imagem, (self.posicao[0]-posx,self.posicao[1]))
         list_point = ((self.posicao[0]-posx+24,self.posicao[1]+164),(self.posicao[0]-posx+78,self.posicao[1]+164),
                            (self.posicao[0]-posx+24,self.posicao[1]+192),(self.posicao[0]-posx+78,self.posicao[1]+192))
@@ -152,7 +172,7 @@ class caixa_tempo():
                         tamanho = len(self.escreve)
                         self.escreve = self.escreve[0:(tamanho-1)]
                     if key == pygame.K_0 or key == pygame.K_KP0:
-                        if self.escreve.count('0') < 3:
+                        if self.escreve.count('0') < 2:
                             self.escreve += '0'
                     elif key == pygame.K_1 or key == pygame.K_KP1:
                         self.escreve += '1'
@@ -189,10 +209,11 @@ class caixa_tempo():
 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if button_ok.collidepoint(pygame.mouse.get_pos()):
-                        #quando for sair testar se o tempo não é nulo
-                        print "OIUUUGGGG"
-                        self.selecao_visivel = False
-                        condicao = True
+                        self.tempo = float(self.escreve)
+                        if self.tempo != 0.0:
+                            print "OIUUUGGGG"
+                            self.selecao_visivel = False
+                            condicao = True
 
         """
 
@@ -219,7 +240,7 @@ class caixa_tempo():
 
         """
 
-class caixa_motor():
+class caixa_motor(caixa):
     def __init__(self):
         """ """
         self.imagem = pygame.image.load("Imagens/Motor.gif").convert()
@@ -238,8 +259,44 @@ class caixa_motor():
 
     def show(self, SCREEN, posx):
         """ """
+        if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
+            font = pygame.font.Font("comic.ttf",25)
+            self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
 
+            if self.opcoes[0] == True:
+                texto = font.render("Frente",True,(0,0,0))
+                SCREEN.blit(texto,(self.posicao[0]-posx+10,self.posicao[1]+25))
+            else:
+                texto = font.render("Parar",True,(0,0,0))
+                SCREEN.blit(texto,(self.posicao[0]-posx+15,self.posicao[1]+25))
+            
+            font = pygame.font.Font("comic.ttf",20)
+
+            if self.atuadores[0] == True and self.atuadores[1] == False:
+                texto = font.render("Dir",True,(0,0,0))
+                SCREEN.blit(texto,(self.posicao[0]-posx+33,self.posicao[1]+60))
+
+            elif self.atuadores[0] == True and self.atuadores[1] == True:
+                texto = font.render("Dir & Esq",True,(0,0,0))
+                SCREEN.blit(texto,(self.posicao[0]-posx+4,self.posicao[1]+60))
+
+            elif self.atuadores[1] == True and self.atuadores[0] == False:
+                texto = font.render("Esq",True,(0,0,0))
+                SCREEN.blit(texto,(self.posicao[0]-posx+33,self.posicao[1]+60))
+
+            pygame.draw.line(SCREEN, (0,0,0,0),
+                            (self.posicao[0]-posx+100,self.posicao[1]+50),
+                            (self.posicao[0]-posx+125,self.posicao[1]+50) ,15)
+
+            pygame.draw.polygon(SCREEN, (0,0,0,0),
+                            ((self.posicao[0]-posx+125,self.posicao[1]+25),(self.posicao[0]-posx+125,self.posicao[1]+75),
+                            (self.posicao[0]-posx+150,self.posicao[1]+50)))
+            #pygame.display.update((self.posicao[0]-posx,self.posicao[1],300-posx,300))
+
+        else:
+            self.rect = 0
         """ """
+
 
     def events(self, SCREEN, posx):
         """ """
@@ -268,13 +325,21 @@ class caixa_motor():
         SCREEN.blit(self.imagem_selecao,(self.posicao[0]-posx-25,self.posicao[1]+100))
         TELA = SCREEN.copy()
         #Draw do primeiro botão selecionador
-        pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+opcao1[2]/2 , self.posicao[1]+128+opcao1[3]/2 ), 5)
+        if self.opcoes[0] == True:
+            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+opcao1[2]/2 , self.posicao[1]+128+opcao1[3]/2 ), 5)
+        if self.opcoes[1] == True:
+            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+opcao2[2]/2 , self.posicao[1]+152+opcao2[3]/2 ), 5)
+
+        if self.atuadores[0] == True:
+            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+escolha1[2]/2 , self.posicao[1]+222+escolha1[3]/2 ), 5)
+        if self.atuadores[1] == True:
+            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+escolha2[2]/2 , self.posicao[1]+246+escolha2[3]/2 ), 5)
         pygame.display.update((0,0,620,600))
 
         condicao = False
         while condicao == False:
             treat_events()
-            CLOCK.tick(5)
+            CLOCK.tick(15)
             for event in pygame.event.get(pygame.MOUSEBUTTONDOWN):
                 if event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -298,8 +363,13 @@ class caixa_motor():
 
                     elif botao_ok.collidepoint(event.pos):
                         # Testar se pelo menos uma selecao foi feita no sentido e nos motores, senão, trancar
-                        self.selecao_visivel = False
-                        condicao = True
+                        teste_opcoes = self.opcoes[0] + self.opcoes[1]
+                        teste_atuadores = self.atuadores[0] + self.atuadores[1]
+                        if teste_opcoes == 1 and teste_atuadores > 0:
+                            self.selecao_visivel = False
+                            condicao = True
+                        else:
+                            print "Não entrei, pq uma das condições não foi satifeita"
 
                 if colidiu == True:
                     colidiu = False
@@ -316,14 +386,6 @@ class caixa_motor():
                     if self.atuadores[1] == True:
                         pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+escolha2[2]/2 , self.posicao[1]+246+escolha2[3]/2 ), 5)
                     pygame.display.update((self.posicao[0]-posx-16,self.posicao[1]+128,20,200))
-
-            print self.opcoes
-            print "\n"
-            print self.atuadores
-
-
-
-
         """ """
 
     def colide(self, pos):

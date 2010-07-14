@@ -1,7 +1,8 @@
 Data 14/07/2010:
 =======> Tarefas <=======
     Feitas:
-    -> Até o presente horário nenhuma
+    -> Teste condicional para que não haja um OKAY na caixa_tempo, se o tempo for nulo
+    ->
 
     A fazer:
     -> Terminar o show da classe caixa_motor, e testar se apenas uma das opcoes está clicada, e se alguma escolha tá clicada
@@ -17,7 +18,6 @@ Data 12/07/2010:
     -> Criação da classe caixa_motor
 
     A fazer:
-    -> Teste condicional para que não haja um OKAY na caixa_tempo, se o tempo for nulo
     -> Possivel adição de caixas no meio de caixas pré existentes, exeto antes da caixa_inicio.
 
     Idéias:
