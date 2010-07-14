@@ -1,0 +1,12 @@
+====> Aqui irei demonstrar que raciocínio segui para a criação das funções encontradas nos programas <====
+
+Classe Tela: método __init__
+    data da ultima modificacao = indefinido
+    data da criação = indefinido
+
+    Estrutura explicativa:
+        Nothing
+
+    Ultima modificao:
+        Nothing
+    

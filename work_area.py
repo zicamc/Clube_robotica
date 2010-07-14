@@ -8,6 +8,9 @@ from caixas import *
 
 class Work_Area(object):
     def __init__(self):
+        """
+
+        """
         print "Iniciando Work_Area"
         self.posicao_x = 0
         self.posicao_vazia = (120,150)
@@ -19,6 +22,8 @@ class Work_Area(object):
         print "Finalizando Work_Area"
 
     def mostra_workarea(self,SCREEN):
+        """
+        """
         print "\t-->  Iniciando show_WorkArea"
         self.caixa_vazia = Image("Imagens/Caixa.gif",(self.posicao_vazia[0]-self.posicao_x,self.posicao_vazia[1]))
 
@@ -34,7 +39,6 @@ class Work_Area(object):
 
     def nova_caixa(self,SCREEN,posicao, ID_CAIXA):
         """
-
         """
         if (self.caixa_vazia.colide(posicao) == 1):
             if ID_CAIXA == 0:
@@ -42,11 +46,20 @@ class Work_Area(object):
                 caixa.troca_posicao(self.posicao_vazia)
                 caixa.events(SCREEN, self.posicao_x)
 
+            elif ID_CAIXA == 1:
+                caixa = caixa_motor()
+                caixa.troca_posicao(self.posicao_vazia)
+                caixa.events(SCREEN, self.posicao_x)
+
+
             self.lista_caixas.append( caixa )
             self.posicao_vazia = (self.posicao_vazia[0]+150, 150)
             self.caixa_vazia = Image("Imagens/Caixa.gif", (self.posicao_vazia[0]-self.posicao_x,self.posicao_vazia[1]))
 
     def testa_colisao(self,SCREEN,posicao):
+        """
+
+        """
         for i in range(len(self.lista_caixas)):
             if (self.lista_caixas[i].colide(posicao) == 1):
                 pos_caixa = self.lista_caixas[i].retorna_pos()
@@ -62,10 +75,19 @@ class Work_Area(object):
         return 0
 
     def retorna_posx(self):
+        """
+
+        """
         return self.posicao_x
 
     def retorna_posv(self):
+        """
+
+        """
         return self.posicao_vazia[0]
 
     def modifica_posx(self, posicao):
+        """
+
+        """
         self.posicao_x = posicao
