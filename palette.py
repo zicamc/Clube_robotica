@@ -13,7 +13,8 @@ class Palette(object):
         #Criando palette azul
         self.imgPalette = Imagem_palette("Imagens/Palette/back_azul.gif","Imagens/aba_azul.gif",(620,9))
         self.imgPalette.add_botao("Imagens/tempo.gif","Imagens/delay.gif",(661,31),0)
-        self.imgPalette.add_botao("Imagens/tempo.gif","Imagens/Motor.gif",(661,140),1)
+        self.imgPalette.add_botao("Imagens/botao_motor.gif","Imagens/Motor.gif",(661,128),1)
+        self.imgPalette.add_botao("Imagens/botao_LED.gif","Imagens/LED.gif",(661,217),2)
         self.lista_palette.append(self.imgPalette)
 
         #Criando palette vermelha
@@ -26,10 +27,10 @@ class Palette(object):
         self.seleciona_caixa = 0
 
     def mostra_palette(self,SCREEN):
-        self.lista_palette[self.troca_palette].show_palette(SCREEN)
         for i in range(len(self.lista_palette)):
             self.lista_palette[i].show_aba(SCREEN)
-
+            
+        self.lista_palette[self.troca_palette].show_palette(SCREEN)
         pygame.display.update((620,0,180,600))
 
     def verifica_palette(self, posicao):

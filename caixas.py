@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import pygame
 import sys
+
+import pygame
 import pygame.font
 
 pygame.font.init()
 CLOCK = pygame.time.Clock()
-fonte = pygame.font.Font("comic.ttf",25)
+fonte = pygame.font.Font("comic.ttf", 25)
 
 class caixa():
     def __init__(self):
         pass
     def troca_posicao(self, posicao):
         pass
-    def troca_posicaox(self,posicao):
+    def troca_posicaox(self, posicao):
         pass
     def show(self, SCREEN, posx):
         pass
@@ -30,7 +31,7 @@ class caixa_inicio(caixa):
         """
 
         """
-        self.posicao = (20,150)
+        self.posicao = (20, 150)
         self.imagem = pygame.image.load("Imagens/Inicio.gif").convert()
         self.posx = 0
         self.progama = -1
@@ -51,19 +52,19 @@ class caixa_inicio(caixa):
         """
 
         """
-        if ( self.posicao[0]-posx < 620 or self.posicao[0]-posx > 0 ):
-            SCREEN.blit(self.imagem,(self.posicao[0]-posx,self.posicao[1]))
-            pygame.draw.line(SCREEN, (0,0,0,0),
-                            (self.posicao[0]-posx+50,self.posicao[1]+50),
-                            (self.posicao[0]-posx+75,self.posicao[1]+50) ,15)
-            pygame.draw.polygon(SCREEN, (0,0,0,0),
-                            ((self.posicao[0]-posx+75,self.posicao[1]+25),(self.posicao[0]-posx+75,self.posicao[1]+75),
-                            (self.posicao[0]-posx+100,self.posicao[1]+50)))
-            pygame.display.update((self.posicao[0]-posx,self.posicao[1],90-posx,100))
+        if (self.posicao[0]-posx < 620 or self.posicao[0]-posx > 0):
+            SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
+            pygame.draw.line(SCREEN, (0, 0, 0, 0),
+                             (self.posicao[0]-posx + 50, self.posicao[1] + 50),
+                             (self.posicao[0]-posx + 75, self.posicao[1] + 50), 15)
+            pygame.draw.polygon(SCREEN, (0, 0, 0, 0),
+                                ((self.posicao[0]-posx + 75, self.posicao[1] + 25), (self.posicao[0]-posx + 75, self.posicao[1] + 75),
+                                (self.posicao[0]-posx + 100, self.posicao[1] + 50)))
+            pygame.display.update((self.posicao[0]-posx, self.posicao[1], 90-posx, 100))
         """
 
         """
-    def colide(self,pos):
+    def colide(self, pos):
         """
 
         """
@@ -76,7 +77,7 @@ class caixa_tempo(caixa):
         """
         self.imagem = pygame.image.load("Imagens/delay.gif").convert()
         self.rect = 0
-        self.posicao = (0,0)
+        self.posicao = (0, 0)
 
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_tempo.gif").convert()
         self.selecao_visivel = True
@@ -100,21 +101,21 @@ class caixa_tempo(caixa):
         Só mostra se houver alguma parte vísivel para o usuário ou seja, se a posição ficar entre -100 e 620
         """
         if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
-            font = pygame.font.Font("comic.ttf",30)
+            font = pygame.font.Font("comic.ttf", 30)
 
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
 
-            texto = font.render(self.escreve[1:],True,(0,0,0))
+            texto = font.render(self.escreve[1:], True, (0, 0, 0))
 
-            SCREEN.blit(texto,(self.posicao[0]-posx+20,self.posicao[1]+50))
+            SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 50))
 
-            pygame.draw.line(SCREEN, (0,0,0,0),
-                            (self.posicao[0]-posx+100,self.posicao[1]+50),
-                            (self.posicao[0]-posx+125,self.posicao[1]+50) ,15)
+            pygame.draw.line(SCREEN, (0, 0, 0, 0),
+                             (self.posicao[0]-posx + 100, self.posicao[1] + 50),
+                             (self.posicao[0]-posx + 125, self.posicao[1] + 50), 15)
 
-            pygame.draw.polygon(SCREEN, (0,0,0,0),
-                            ((self.posicao[0]-posx+125,self.posicao[1]+25),(self.posicao[0]-posx+125,self.posicao[1]+75),
-                            (self.posicao[0]-posx+150,self.posicao[1]+50)))
+            pygame.draw.polygon(SCREEN, (0, 0, 0, 0),
+                                ((self.posicao[0]-posx + 125, self.posicao[1] + 25), (self.posicao[0]-posx + 125, self.posicao[1] + 75),
+                                (self.posicao[0]-posx + 150, self.posicao[1] + 50)))
             #pygame.display.update((self.posicao[0]-posx,self.posicao[1],300-posx,300))
 
         else:
@@ -138,20 +139,19 @@ class caixa_tempo(caixa):
         8 - Limitação de execuções por segundo
         9 - 
         """
-
         #BUG - Tempo em décimos só pode aceitar um dígito!
 
-        SCREEN.blit(self.imagem, (self.posicao[0]-posx,self.posicao[1]))
-        list_point = ((self.posicao[0]-posx+24,self.posicao[1]+164),(self.posicao[0]-posx+78,self.posicao[1]+164),
-                           (self.posicao[0]-posx+24,self.posicao[1]+192),(self.posicao[0]-posx+78,self.posicao[1]+192))
-        button_ok = pygame.draw.polygon(SCREEN, (0,0,0,0), list_point )
-        SCREEN.blit(self.imagem_selecao, (self.posicao[0]-posx-25, self.posicao[1]+100))
+        SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
+        list_point = ((self.posicao[0]-posx + 24, self.posicao[1] + 164), (self.posicao[0]-posx + 78, self.posicao[1] + 164),
+                      (self.posicao[0]-posx + 24, self.posicao[1] + 192), (self.posicao[0]-posx + 78, self.posicao[1] + 192))
+        button_ok = pygame.draw.polygon(SCREEN, (0, 0, 0, 0), list_point)
+        SCREEN.blit(self.imagem_selecao, (self.posicao[0]-posx-25, self.posicao[1] + 100))
 
         TELA = SCREEN.copy()
 
-        texto = fonte.render(self.escreve[1:],True,(255,255,255))
-        SCREEN.blit(texto,(self.posicao[0]-posx+20, self.posicao[1]+110))
-        pygame.display.update((0,0,620,600))
+        texto = fonte.render(self.escreve[1:], True, (255, 255, 255))
+        SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 110))
+        pygame.display.update((0, 0, 620, 600))
 
         condicao = False
         
@@ -166,9 +166,9 @@ class caixa_tempo(caixa):
                     if self.escreve == "":
                         self.escreve = "0"
                     if (key == pygame.K_PERIOD or key == pygame.K_KP_PERIOD):
-                       if self.escreve.find('.') == -1:
-                           self.escreve += '.'
-                    if int(self.tempo) > 99 or ((self.tempo*100)%10 < 10 and ((self.tempo*100)%10 > 0)):
+                        if self.escreve.find('.') == -1:
+                            self.escreve += '.'
+                    if int(self.tempo) > 99 or ((self.tempo * 100) % 10 < 10 and ((self.tempo * 100) % 10 > 0)):
                         tamanho = len(self.escreve)
                         self.escreve = self.escreve[0:(tamanho-1)]
                     if key == pygame.K_0 or key == pygame.K_KP0:
@@ -194,7 +194,7 @@ class caixa_tempo(caixa):
                         self.escreve += '9'
 
                     self.tempo = float(self.escreve)
-                    if int(self.tempo) > 99 or ((self.tempo*100)%10 < 10 and ((self.tempo*100)%10 > 0)):
+                    if int(self.tempo) > 99 or ((self.tempo * 100) % 10 < 10 and ((self.tempo * 100) % 10 > 0)):
                         tamanho = len(self.escreve)
                         self.escreve = self.escreve[0:(tamanho-1)]
 
@@ -202,10 +202,10 @@ class caixa_tempo(caixa):
                         tamanho = len(self.escreve)
                         self.escreve = self.escreve[0:(tamanho-1)]
 
-                    texto = fonte.render(self.escreve[1:],True,(255,255,255))
-                    SCREEN.blit(TELA,(0,0))
-                    SCREEN.blit(texto,(self.posicao[0]-posx+20, self.posicao[1]+110))
-                    pygame.display.update((self.posicao[0]-posx,self.posicao[1]+110,100,40))
+                    texto = fonte.render(self.escreve[1:], True, (255, 255, 255))
+                    SCREEN.blit(TELA, (0, 0))
+                    SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 110))
+                    pygame.display.update((self.posicao[0]-posx, self.posicao[1] + 110, 100, 40))
 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if button_ok.collidepoint(pygame.mouse.get_pos()):
@@ -219,7 +219,7 @@ class caixa_tempo(caixa):
 
         """
 
-    def colide(self,pos):
+    def colide(self, pos):
         """
         
         """
@@ -245,11 +245,11 @@ class caixa_motor(caixa):
         """ """
         self.imagem = pygame.image.load("Imagens/Motor.gif").convert()
         self.rect = 0
-        self.posicao = (0,0)
+        self.posicao = (0, 0)
 
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_motor.gif").convert()
-        self.opcoes = [True,False]
-        self.atuadores = [False,False]
+        self.opcoes = [True, False]
+        self.atuadores = [False, False]
         """ """
 
     def troca_posicao(self, posicao):
@@ -260,37 +260,37 @@ class caixa_motor(caixa):
     def show(self, SCREEN, posx):
         """ """
         if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
-            font = pygame.font.Font("comic.ttf",25)
+            font = pygame.font.Font("comic.ttf", 25)
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
 
             if self.opcoes[0] == True:
-                texto = font.render("Frente",True,(0,0,0))
-                SCREEN.blit(texto,(self.posicao[0]-posx+10,self.posicao[1]+25))
+                texto = font.render("Frente", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 10, self.posicao[1] + 25))
             else:
-                texto = font.render("Parar",True,(0,0,0))
-                SCREEN.blit(texto,(self.posicao[0]-posx+15,self.posicao[1]+25))
+                texto = font.render("Parar", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 15, self.posicao[1] + 25))
             
-            font = pygame.font.Font("comic.ttf",20)
+            font = pygame.font.Font("comic.ttf", 20)
 
             if self.atuadores[0] == True and self.atuadores[1] == False:
-                texto = font.render("Dir",True,(0,0,0))
-                SCREEN.blit(texto,(self.posicao[0]-posx+33,self.posicao[1]+60))
+                texto = font.render("Dir", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
 
             elif self.atuadores[0] == True and self.atuadores[1] == True:
-                texto = font.render("Dir & Esq",True,(0,0,0))
-                SCREEN.blit(texto,(self.posicao[0]-posx+4,self.posicao[1]+60))
+                texto = font.render("Dir & Esq", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 4, self.posicao[1] + 60))
 
             elif self.atuadores[1] == True and self.atuadores[0] == False:
-                texto = font.render("Esq",True,(0,0,0))
-                SCREEN.blit(texto,(self.posicao[0]-posx+33,self.posicao[1]+60))
+                texto = font.render("Esq", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
 
-            pygame.draw.line(SCREEN, (0,0,0,0),
-                            (self.posicao[0]-posx+100,self.posicao[1]+50),
-                            (self.posicao[0]-posx+125,self.posicao[1]+50) ,15)
+            pygame.draw.line(SCREEN, (0, 0, 0, 0),
+                             (self.posicao[0]-posx + 100, self.posicao[1] + 50),
+                             (self.posicao[0]-posx + 125, self.posicao[1] + 50), 15)
 
-            pygame.draw.polygon(SCREEN, (0,0,0,0),
-                            ((self.posicao[0]-posx+125,self.posicao[1]+25),(self.posicao[0]-posx+125,self.posicao[1]+75),
-                            (self.posicao[0]-posx+150,self.posicao[1]+50)))
+            pygame.draw.polygon(SCREEN, (0, 0, 0, 0),
+                                ((self.posicao[0]-posx + 125, self.posicao[1] + 25), (self.posicao[0]-posx + 125, self.posicao[1] + 75),
+                                (self.posicao[0]-posx + 150, self.posicao[1] + 50)))
         else:
             self.rect = 0
         """ """
@@ -298,41 +298,41 @@ class caixa_motor(caixa):
 
     def events(self, SCREEN, posx):
         """ """
-        SCREEN.blit(self.imagem, (self.posicao[0]-posx,self.posicao[1]))
+        SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
         #Para não ficar trocando toda hora que clica em qualquer lugar e não colidir com os objetos apropriados
         colidiu = False
 
         # Será pelo menos esses, não sendo necessária a implementação de outros botões
-        opcao1 = (self.posicao[0]-posx-16, self.posicao[1]+128, 23, 19)
-        opcao2 = (self.posicao[0]-posx-16, self.posicao[1]+152, 23, 19)
+        opcao1 = (self.posicao[0]-posx-16, self.posicao[1] + 128, 23, 19)
+        opcao2 = (self.posicao[0]-posx-16, self.posicao[1] + 152, 23, 19)
         # Está sendo criada assim para facilicitação do inicio desta parte do
         # projeto, no futuro haverá outra interface que afetará esses botoes
-        escolha1 = (self.posicao[0]-posx-16, self.posicao[1]+222,23,19)
-        escolha2 = (self.posicao[0]-posx-16, self.posicao[1]+246,23,19)
+        escolha1 = (self.posicao[0]-posx-16, self.posicao[1] + 222, 23, 19)
+        escolha2 = (self.posicao[0]-posx-16, self.posicao[1] + 246, 23, 19)
         #Botao Ok
-        points_ok = (self.posicao[0]-posx-4,self.posicao[1]+269,53,28)
+        points_ok = (self.posicao[0]-posx-4, self.posicao[1] + 269, 53, 28)
 
-        botoes_opcoes = (pygame.draw.rect(SCREEN, (0,0,0,0), opcao1),
-                         pygame.draw.rect(SCREEN, (0,0,0,0), opcao2))
+        botoes_opcoes = (pygame.draw.rect(SCREEN, (0, 0, 0, 0), opcao1),
+                         pygame.draw.rect(SCREEN, (0, 0, 0, 0), opcao2))
 
-        botoes_atuadores = (pygame.draw.rect(SCREEN, (0,0,0,0),escolha1),
-                            pygame.draw.rect(SCREEN, (0,0,0,0),escolha2))
+        botoes_atuadores = (pygame.draw.rect(SCREEN, (0, 0, 0, 0), escolha1),
+                            pygame.draw.rect(SCREEN, (0, 0, 0, 0), escolha2))
 
-        botao_ok = pygame.draw.rect(SCREEN, (0,0,0,0), points_ok)
+        botao_ok = pygame.draw.rect(SCREEN, (0, 0, 0, 0), points_ok)
 
-        SCREEN.blit(self.imagem_selecao,(self.posicao[0]-posx-25,self.posicao[1]+100))
+        SCREEN.blit(self.imagem_selecao, (self.posicao[0]-posx-25, self.posicao[1] + 100))
         TELA = SCREEN.copy()
         #Draw do primeiro botão selecionador
         if self.opcoes[0] == True:
-            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+opcao1[2]/2 , self.posicao[1]+128+opcao1[3]/2 ), 5)
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + opcao1[2] / 2, self.posicao[1] + 128 + opcao1[3] / 2), 5)
         if self.opcoes[1] == True:
-            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+opcao2[2]/2 , self.posicao[1]+152+opcao2[3]/2 ), 5)
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + opcao2[2] / 2, self.posicao[1] + 152 + opcao2[3] / 2), 5)
 
         if self.atuadores[0] == True:
-            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+escolha1[2]/2 , self.posicao[1]+222+escolha1[3]/2 ), 5)
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + escolha1[2] / 2, self.posicao[1] + 222 + escolha1[3] / 2), 5)
         if self.atuadores[1] == True:
-            pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+escolha2[2]/2 , self.posicao[1]+246+escolha2[3]/2 ), 5)
-        pygame.display.update((0,0,620,600))
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + escolha2[2] / 2, self.posicao[1] + 246 + escolha2[3] / 2), 5)
+        pygame.display.update((0, 0, 620, 600))
 
         condicao = False
         while condicao == False:
@@ -373,17 +373,17 @@ class caixa_motor(caixa):
                     colidiu = False
                     # Dá os blit das bolinhas de seleção, legal não!
                     # PS: Fiz do jeito feio de se fazer, cheio de if/else
-                    SCREEN.blit(TELA,(0,0))
+                    SCREEN.blit(TELA, (0, 0))
                     if self.opcoes[0] == True:
-                        pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+opcao1[2]/2 , self.posicao[1]+128+opcao1[3]/2 ), 5)
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + opcao1[2] / 2, self.posicao[1] + 128 + opcao1[3] / 2), 5)
                     if self.opcoes[1] == True:
-                        pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+opcao2[2]/2 , self.posicao[1]+152+opcao2[3]/2 ), 5)
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + opcao2[2] / 2, self.posicao[1] + 152 + opcao2[3] / 2), 5)
 
                     if self.atuadores[0] == True:
-                        pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+escolha1[2]/2 , self.posicao[1]+222+escolha1[3]/2 ), 5)
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + escolha1[2] / 2, self.posicao[1] + 222 + escolha1[3] / 2), 5)
                     if self.atuadores[1] == True:
-                        pygame.draw.circle(SCREEN,(0,0,0,0),( self.posicao[0]-posx-16+escolha2[2]/2 , self.posicao[1]+246+escolha2[3]/2 ), 5)
-                    pygame.display.update((self.posicao[0]-posx-16,self.posicao[1]+128,20,200))
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-16 + escolha2[2] / 2, self.posicao[1] + 246 + escolha2[3] / 2), 5)
+                    pygame.display.update((self.posicao[0]-posx-16, self.posicao[1] + 128, 20, 200))
         """ """
 
     def colide(self, pos):
@@ -398,6 +398,145 @@ class caixa_motor(caixa):
         """ """
         return self.posicao
         """ """
+
+class caixa_led(caixa):
+    def __init__(self):
+        self.imagem = pygame.image.load("Imagens/LED.gif").convert()
+        self.rect = 0
+        self.posicao = (0, 0)
+
+        self.imagem_selecao = pygame.image.load("Imagens/Caixa_led.gif").convert()
+        self.opcoes = [True, False]
+        self.leds = [False, False, False]
+        """ """
+
+    def troca_posicao(self, posicao):
+        """ """
+        self.posicao = posicao
+        """ """
+
+    def show(self, SCREEN, posx):
+        pass
+
+    def events(self, SCREEN, posx):
+        """ """
+        SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
+        #Para não ficar trocando toda hora que clica em qualquer lugar e não colidir com os objetos apropriados
+        colidiu = False
+
+        # Será pelo menos esses, não sendo necessária a implementação de outros botões
+        opcao1 = (self.posicao[0]-posx-15, self.posicao[1] + 132, 23, 19)
+        opcao2 = (self.posicao[0]-posx-15, self.posicao[1] + 156, 23, 19)
+
+        # Está sendo criada assim para facilicitação do inicio desta parte do
+        # projeto, no futuro haverá outra interface que afetará esses botoes
+        escolha1 = (self.posicao[0]-posx-15, self.posicao[1] + 204, 23, 19)
+        escolha2 = (self.posicao[0]-posx-15, self.posicao[1] + 223, 23, 19)
+        escolha3 = (self.posicao[0]-posx-15, self.posicao[1] + 240, 23, 19)
+
+        #Botao Ok
+        points_ok = (self.posicao[0]-posx + 10, self.posicao[1] + 266, 53, 28)
+
+        botoes_opcoes = (pygame.draw.rect(SCREEN, (0, 0, 0, 0), opcao1),
+                         pygame.draw.rect(SCREEN, (0, 0, 0, 0), opcao2))
+
+        botoes_leds = (pygame.draw.rect(SCREEN, (0, 0, 0, 0), escolha1),
+                       pygame.draw.rect(SCREEN, (0, 0, 0, 0), escolha2),
+                       pygame.draw.rect(SCREEN, (0, 0, 0, 0), escolha3))
+
+        botao_ok = pygame.draw.rect(SCREEN, (0, 0, 0, 0), points_ok)
+
+        SCREEN.blit(self.imagem_selecao, (self.posicao[0]-posx-25, self.posicao[1] + 100))
+        TELA = SCREEN.copy()
+        
+        if self.opcoes[0] == True:
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + opcao1[2] / 2, self.posicao[1] + 132 + opcao1[3] / 2), 5)
+        if self.opcoes[1] == True:
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + opcao2[2] / 2, self.posicao[1] + 156 + opcao2[3] / 2), 5)
+
+        if self.leds[0] == True:
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + escolha1[2] / 2, self.posicao[1] + 204 + escolha1[3] / 2), 5)
+        if self.leds[1] == True:
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + escolha2[2] / 2, self.posicao[1] + 223 + escolha2[3] / 2), 5)
+        if self.leds[2] == True:
+            pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + escolha3[2] / 2, self.posicao[1] + 240 + escolha3[3] / 2), 5)
+
+        pygame.display.update((0, 0, 620, 600))
+
+        condicao = False
+        while condicao == False:
+            treat_events()
+            CLOCK.tick(15)
+            for event in pygame.event.get(pygame.MOUSEBUTTONDOWN):
+                if event.type == pygame.MOUSEBUTTONDOWN:
+
+                    #OBS: como no máximo 3 coisas o motor poderá fazer e no minimo 2 opções, neste caso faremos sobre 2 opções
+                    #OBS2: Melhorar essa forma, tá muito chinela, pensar em uma forma melhor
+                    if botoes_opcoes[0].collidepoint(event.pos):
+                        self.opcoes[0] = not(self.opcoes[0])
+                        colidiu = True
+
+                    elif botoes_opcoes[1].collidepoint(event.pos):
+                        self.opcoes[1] = not(self.opcoes[1])
+                        colidiu = True
+
+                    elif botoes_leds[0].collidepoint(event.pos):
+                        self.leds[0] = not(self.leds[0])
+                        colidiu = True
+
+                    elif botoes_leds[1].collidepoint(event.pos):
+                        self.leds[1] = not(self.leds[1])
+                        colidiu = True
+                    
+                    elif botoes_leds[2].collidepoint(event.pos):
+                        self.leds[2] = not(self.leds[2])
+                        colidiu = True
+
+                    elif botao_ok.collidepoint(event.pos):
+                        # Testar se pelo menos uma selecao foi feita na ação do led e nos leds, senão, trancar
+                        teste_opcoes = self.opcoes[0] + self.opcoes[1]
+                        teste_atuadores = self.leds[0] + self.leds[1] + self.leds[2]
+                        if teste_opcoes == 1 and teste_atuadores > 0:
+                            self.selecao_visivel = False
+                            condicao = True
+                        else:
+                            print "Não entrei, pq uma das condições não foi satifeita"
+
+                if colidiu == True:
+                    colidiu = False
+                    # Dá os blit das bolinhas de seleção, legal não!
+                    # PS: Fiz do jeito feio de se fazer, cheio de if/else
+                    SCREEN.blit(TELA, (0, 0))
+                    if self.opcoes[0] == True:
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + opcao1[2] / 2, self.posicao[1] + 132 + opcao1[3] / 2), 5)
+                    if self.opcoes[1] == True:
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + opcao2[2] / 2, self.posicao[1] + 156 + opcao2[3] / 2), 5)
+
+                    if self.leds[0] == True:
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + escolha1[2] / 2, self.posicao[1] + 204 + escolha1[3] / 2), 5)
+                    if self.leds[1] == True:
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + escolha2[2] / 2, self.posicao[1] + 223 + escolha2[3] / 2), 5)
+                    if self.leds[2] == True:
+                        pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-15 + escolha3[2] / 2, self.posicao[1] + 240 + escolha3[3] / 2), 5)
+
+                    pygame.display.update((self.posicao[0]-posx-16, self.posicao[1] + 128, 20, 200))
+
+        """ """
+
+
+    def colide(self, pos):
+        """ """
+        try:
+            return self.rect.collidepoint(pos)
+        except:
+            return 0
+        """ """
+
+    def retorna_pos(self):
+        """ """
+        return self.posicao
+        """ """
+
 
 def treat_events():
     """

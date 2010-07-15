@@ -41,16 +41,20 @@ class Work_Area(object):
         """
         """
         if (self.caixa_vazia.colide(posicao) == 1):
-            if ID_CAIXA == 0:
+            if ID_CAIXA == 0: #Id do tempo
                 caixa = caixa_tempo()
                 caixa.troca_posicao(self.posicao_vazia)
                 caixa.events(SCREEN, self.posicao_x)
 
-            elif ID_CAIXA == 1:
+            elif ID_CAIXA == 1: #ID do motor
                 caixa = caixa_motor()
                 caixa.troca_posicao(self.posicao_vazia)
                 caixa.events(SCREEN, self.posicao_x)
 
+            elif ID_CAIXA == 2: #ID do LED
+                caixa = caixa_led()
+                caixa.troca_posicao(self.posicao_vazia)
+                caixa.events(SCREEN, self.posicao_x)
 
             self.lista_caixas.append( caixa )
             self.posicao_vazia = (self.posicao_vazia[0]+150, 150)
