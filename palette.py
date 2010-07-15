@@ -15,6 +15,7 @@ class Palette(object):
         self.imgPalette.add_botao("Imagens/tempo.gif","Imagens/delay.gif",(661,31),0)
         self.imgPalette.add_botao("Imagens/botao_motor.gif","Imagens/Motor.gif",(661,128),1)
         self.imgPalette.add_botao("Imagens/botao_LED.gif","Imagens/LED.gif",(661,217),2)
+        self.imgPalette.add_botao("Imagens/botao_toque.gif","Imagens/Toque.gif",(661,319),3)
         self.lista_palette.append(self.imgPalette)
 
         #Criando palette vermelha

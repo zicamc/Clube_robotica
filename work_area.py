@@ -56,6 +56,11 @@ class Work_Area(object):
                 caixa.troca_posicao(self.posicao_vazia)
                 caixa.events(SCREEN, self.posicao_x)
 
+            elif ID_CAIXA == 3: #ID do toque
+                caixa = caixa_toque()
+                caixa.troca_posicao(self.posicao_vazia)
+                caixa.events(SCREEN, self.posicao_x)
+
             self.lista_caixas.append( caixa )
             self.posicao_vazia = (self.posicao_vazia[0]+150, 150)
             self.caixa_vazia = Image("Imagens/Caixa.gif", (self.posicao_vazia[0]-self.posicao_x,self.posicao_vazia[1]))
