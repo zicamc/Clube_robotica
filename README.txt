@@ -5,14 +5,15 @@ Data 14/07/2010:
     -> Finalização do método show da classe motor e teste condicinal para que não esteja
        as duas opções ou nenhuma estiver selecionada(Para frente, parar) e que pelo menos
        um motor esteja selecionado
+    -> Adicao da classe caixa_led
 
 
     A fazer:
-    -> Adicão da caixa_led
     -> Adicao da caixa_toque
 
     Idéias:
     -> Exclusão de caixas existentes
+    -> Possibilidade de salvar o programa! Mas dae tem que aprender a classe os acho!
 
 Data 12/07/2010:
 =======> Tarefas <=======

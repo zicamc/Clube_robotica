@@ -416,6 +416,59 @@ class caixa_led(caixa):
         """ """
 
     def show(self, SCREEN, posx):
+        
+        if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
+            font = pygame.font.Font("comic.ttf", 25)
+            self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
+
+            if self.opcoes[0] == True:
+                texto = font.render("Liga", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 25))
+            else:
+                texto = font.render("Desliga", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 4, self.posicao[1] + 25))
+            
+            font = pygame.font.Font("comic.ttf", 20)
+
+            if self.leds[0] == True and self.leds[1] == True and self.leds[2] == True :
+                texto = font.render("1,2 e 3", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 10, self.posicao[1] + 60))
+
+            elif self.leds[0] == True and self.leds[1] == True:
+                texto = font.render("1 e 2", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 60))
+
+            elif self.leds[0] == True and self.leds[2] == True:
+                texto = font.render("1 e 3", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
+
+            elif self.leds[1] == True and self.leds[2] == True:
+                texto = font.render("2 e 3", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
+
+            elif self.leds[0] == True:
+                texto = font.render("1", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 40, self.posicao[1] + 60))
+            
+            elif self.leds[1] == True:
+                texto = font.render("2", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 40, self.posicao[1] + 60))
+            
+            elif self.leds[2] == True:
+                texto = font.render("3", True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 40, self.posicao[1] + 60))
+            
+            
+
+            pygame.draw.line(SCREEN, (0, 0, 0, 0),
+                             (self.posicao[0]-posx + 100, self.posicao[1] + 50),
+                             (self.posicao[0]-posx + 125, self.posicao[1] + 50), 15)
+
+            pygame.draw.polygon(SCREEN, (0, 0, 0, 0),
+                                ((self.posicao[0]-posx + 125, self.posicao[1] + 25), (self.posicao[0]-posx + 125, self.posicao[1] + 75),
+                                (self.posicao[0]-posx + 150, self.posicao[1] + 50)))
+        else:
+            self.rect = 0
         pass
 
     def events(self, SCREEN, posx):

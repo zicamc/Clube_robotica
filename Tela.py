@@ -82,14 +82,14 @@ class tela(object):
                 print "Entrei"
                 if posicao[0] < 30:
                     posx = self.objWorkArea.retorna_posx()
-                    self.objWorkArea.modifica_posx(posx + 50)
+                    self.objWorkArea.modifica_posx(posx - 50)
                     print "Diminui posx"
                     self.objWorkArea.mostra_workarea(self.SCREEN)
                     self.objPalette.mostra_palette(self.SCREEN)
                     pygame.display.update()
                 elif posicao[0] < 620 and posicao[0] > 590:
                     posx = self.objWorkArea.retorna_posx()
-                    self.objWorkArea.modifica_posx(posx - 50)
+                    self.objWorkArea.modifica_posx(posx + 50)
                     print "Aumenta posx"
                     self.objWorkArea.mostra_workarea(self.SCREEN)
                     self.objPalette.mostra_palette(self.SCREEN)
