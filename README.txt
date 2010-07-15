@@ -6,14 +6,16 @@ Data 14/07/2010:
        as duas opções ou nenhuma estiver selecionada(Para frente, parar) e que pelo menos
        um motor esteja selecionado
     -> Adicao da classe caixa_led
+    -> Adicao da caixa_toque
 
 
     A fazer:
-    -> Adicao da caixa_toque
+    -> Finalizados todos os objetivos do dia
 
     Idéias:
     -> Exclusão de caixas existentes
     -> Possibilidade de salvar o programa! Mas dae tem que aprender a classe os acho!
+    -> Inclusão de caixas no meio das caixas já existentes
 
 Data 12/07/2010:
 =======> Tarefas <=======
@@ -21,7 +23,7 @@ Data 12/07/2010:
     -> Criação da classe caixa_motor
 
     A fazer:
-    -> Possivel adição de caixas no meio de caixas pré existentes, exeto antes da caixa_inicio.
+    -> Finalizados todos os objetivos do dia
 
     Idéias:
     -> Exclusão de caixas já criadas
