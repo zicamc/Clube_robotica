@@ -20,8 +20,6 @@ class caixa():
         pass
     def colide(self, pos):
         pass
-
-    
     def events(self, SCREEN, posx):
         pass
     def retorna_pos(self):
@@ -306,6 +304,9 @@ class caixa_motor(caixa):
 
     def events(self, SCREEN, posx):
         """ """
+
+        #ANDA PARA FRENTE, ANDRA PARA ESQUERDA, ANDA PARA DIREITA
+
         SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
         #Para não ficar trocando toda hora que clica em qualquer lugar e não colidir com os objetos apropriados
         colidiu = False
@@ -763,6 +764,7 @@ class caixa_toque(caixa):
         """ """
         return self.posicao
         """ """
+
 
 def treat_events():
     """

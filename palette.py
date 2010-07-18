@@ -6,7 +6,12 @@ import pygame
 from imagens import Imagem_palette
 
 class Palette(object):
+    """
+
+    """
     def __init__(self):
+        """
+        """
         #Inicia os rects da área
         self.lista_palette = []
 
@@ -20,19 +25,24 @@ class Palette(object):
 
         #Criando palette vermelha
         self.imgPalette = Imagem_palette("Imagens/Palette/back_vermelho.gif","Imagens/aba_vermelha.gif",(621,144))
+
+        #Adicionando os botões (Por enquanto não tem botões)
+
         self.lista_palette.append(self.imgPalette)
-
         self.imgPalette = 0
-
         self.troca_palette = 0
         self.seleciona_caixa = 0
 
     def mostra_palette(self,SCREEN):
+        """
+        """
         for i in range(len(self.lista_palette)):
             self.lista_palette[i].show_aba(SCREEN)
             
         self.lista_palette[self.troca_palette].show_palette(SCREEN)
         pygame.display.update((620,0,180,600))
+        #Fim do método
+        """"""
 
     def verifica_palette(self, posicao):
         if ( posicao[0] < 650 ):

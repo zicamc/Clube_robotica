@@ -1,3 +1,22 @@
+Data 18/07/2010
+=======> Tarefas <=======
+    Feitas:
+    -> Verificação se a caixa_nova já saiu e já centralizar
+
+Data 15/07/2010
+=======> Tarefas <=======
+    Feitas:
+    -> Até o momento deste commit nenhuma
+
+    A fazer:
+    -> Adição de luz( segue e foge ) tempo
+    -> Adição do calor (segue e foge) tempo
+    -> Modificação da caixa_motor, (PAra frente, Gira esquerda, Gira direita, Parar)
+    -> Adição do buzzer ( Buzina, tempo )
+
+    Ideias:
+    -> Até o momento deste commit nenhuma
+
 Data 14/07/2010:
 =======> Tarefas <=======
     Feitas:

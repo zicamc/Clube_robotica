@@ -64,6 +64,9 @@ class Work_Area(object):
             self.lista_caixas.append( caixa )
             self.posicao_vazia = (self.posicao_vazia[0]+150, 150)
             self.caixa_vazia = Image("Imagens/Caixa.gif", (self.posicao_vazia[0]-self.posicao_x,self.posicao_vazia[1]))
+            if ( self.posicao_vazia[0] - self.posicao_x > 500):
+                self.posicao_x = self.posicao_x + 300
+
 
     def testa_colisao(self,SCREEN,posicao):
         """
@@ -99,4 +102,5 @@ class Work_Area(object):
         """
 
         """
-        self.posicao_x = posicao
+        if (posicao >= 0):
+            self.posicao_x = posicao
