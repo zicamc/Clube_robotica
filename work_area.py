@@ -4,7 +4,12 @@
 
 import pygame
 from imagens import Image
-from caixas import *
+from caixas.caixa_inicio import caixa_inicio
+from caixas.caixa_led import caixa_led
+from caixas.caixa_luz import caixa_luz
+from caixas.caixa_motor import caixa_motor
+from caixas.caixa_tempo import caixa_tempo
+from caixas.caixa_toque import caixa_toque
 
 class Work_Area(object):
     def __init__(self):
@@ -58,6 +63,11 @@ class Work_Area(object):
 
             elif ID_CAIXA == 3: #ID do toque
                 caixa = caixa_toque()
+                caixa.troca_posicao(self.posicao_vazia)
+                caixa.events(SCREEN, self.posicao_x)
+
+            elif ID_CAIXA == 10: #ID da luz
+                caixa = caixa_luz()
                 caixa.troca_posicao(self.posicao_vazia)
                 caixa.events(SCREEN, self.posicao_x)
 

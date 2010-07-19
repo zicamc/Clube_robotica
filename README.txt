@@ -2,7 +2,8 @@ Data 18/07/2010
 =======> Tarefas <=======
     Feitas:
     -> Verificação se a caixa_nova já saiu e já centralizar
-    -> Modificação da caixa_motor, (PAra frente, Gira esquerda, Gira direita, Parar)
+    -> Modificação da caixa_motor(Para frente, Gira esquerda, Gira direita, Parar)
+
 
 Data 15/07/2010
 =======> Tarefas <=======
