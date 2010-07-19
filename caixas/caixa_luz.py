@@ -77,6 +77,7 @@ class caixa_luz(caixa):
             CLOCK.tick(15)
             for event in pygame.event.get((pygame.MOUSEBUTTONDOWN,pygame.KEYDOWN)):
                 if event.type == pygame.KEYDOWN:
+                    colidiu = True
                     key = event.key
                     if self.escreve == "":
                         self.escreve = "0"
@@ -87,7 +88,6 @@ class caixa_luz(caixa):
 
                     if key == pygame.K_0 or key == pygame.K_KP0:
                         self.escreve += '0'
-
                     elif key == pygame.K_1 or key == pygame.K_KP1:
                         self.escreve += '1'
                     elif key == pygame.K_2 or key == pygame.K_KP2:
@@ -123,7 +123,7 @@ class caixa_luz(caixa):
 
 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    print "OI"
+                    
 
                     if botao_ok.collidepoint(event.pos):
                         # Testar se pelo menos uma selecao foi feita no sentido e nos motores, senão, trancar

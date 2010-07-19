@@ -106,20 +106,15 @@ class caixa_tempo(caixa):
                         self.escreve = "0"
                     if (key == pygame.K_PERIOD or key == pygame.K_KP_PERIOD):
                         if self.escreve.find('.') == -1:
-                            self.tempo = float(self.escreve)
-                            if self.tempo == 0:
-                                self.escreve = "000"
-                            elif self.tempo < 10:
-                                self.escreve = ("00"+chr(self.tempo))
-                            elif self.tempo > 9:
-                                self.escreve = ("0"+chr(int(self.tempo/10))+chr(self.tempo%10))
                             self.escreve += '.'
+
                     if int(self.tempo) > 99 or ((self.tempo * 100) % 10 < 10 and ((self.tempo * 100) % 10 > 0)):
                         tamanho = len(self.escreve)
                         self.escreve = self.escreve[0:(tamanho-1)]
                     if key == pygame.K_0 or key == pygame.K_KP0:
                         if self.escreve.count('0') < 2:
                             self.escreve += '0'
+
                     elif key == pygame.K_1 or key == pygame.K_KP1:
                         self.escreve += '1'
                     elif key == pygame.K_2 or key == pygame.K_KP2:
