@@ -9,6 +9,7 @@ Data 25/07/2010
     Idéias:
     -> tempo inteligente (centralização devido ao numero de caracteres
     -> Melhoria da entrada dos tempos
+    -> Possivel salvar o programa criado
 
 Data 18/07/2010
 =======> Tarefas <=======
