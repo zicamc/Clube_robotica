@@ -90,7 +90,7 @@ class Work_Area(object):
                 self.posicao_x = self.posicao_x + 300
 
 
-    def testa_colisao(self,SCREEN,posicao):
+    def modifica_caixa(self,SCREEN,posicao):
         """
 
         """
@@ -106,6 +106,26 @@ class Work_Area(object):
                 pygame.display.update((0,0,620,600))
                 self.lista_caixas[i].events(SCREEN, self.posicao_x)
                 return 1
+        return 0
+
+    def retira_caixa(self, posicao):
+        """
+        """
+        tamanho = len(self.lista_caixas)
+        for i in range(tamanho):
+            if self.lista_caixas[i].colide(posicao) == 1:
+                self.lista_caixas.pop(i)
+                while i < tamanho:
+                    try:
+                        pos = self.lista_caixas[i].retorna_pos()
+                        self.lista_caixas[i].troca_posicao((pos[0]-150,pos[1]))
+                        i = i + 1
+                    except:
+                        print "Não foi possivel a retira da caixa"
+                        i = i + 1
+                self.posicao_vazia = (self.posicao_vazia[0]-150,self.posicao_vazia[1])
+                return 1
+
         return 0
 
     def retorna_posx(self):

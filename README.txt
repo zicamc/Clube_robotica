@@ -4,6 +4,7 @@ Data 25/07/2010
     -> Adicao da caixa_buzzer
     -> Adicao da caixa_temperatura
     -> Finalização da caixa_luz
+    -> Adicionada a remoção de caixas, ainda na situação de que elas são lineares
 
     Idéias:
     -> tempo inteligente (centralização devido ao numero de caracteres

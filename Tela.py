@@ -111,8 +111,16 @@ class tela(object):
                     self.objPalette.mostra_palette(self.SCREEN)
                     pygame.display.update()
             else:
-                if (self.objWorkArea.testa_colisao(self.SCREEN,posicao) == 1):
-                    self.objWorkArea.mostra_workarea(self.SCREEN)
-                    self.objPalette.mostra_palette(self.SCREEN)
-                    pygame.display.update()
-                
+                if event.button == 1: #TODO 1 significa que o botão clicado foi o da direita
+                    if (self.objWorkArea.modifica_caixa(self.SCREEN,posicao) == 1):
+                        self.objWorkArea.mostra_workarea(self.SCREEN)
+                        self.objPalette.mostra_palette(self.SCREEN)
+                        pygame.display.update()
+
+                elif event.button == 3:
+                    if (self.objWorkArea.retira_caixa(posicao) == 1):
+                        self.objWorkArea.mostra_workarea(self.SCREEN)
+                        self.objPalette.mostra_palette(self.SCREEN)
+                        pygame.display.update()
+
+
