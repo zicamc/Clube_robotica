@@ -7,18 +7,18 @@ pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
 #===============================================================================
-#                   CAIXA LUZ
+#                   CAIXA TEMPERATURA
 #===============================================================================
-class caixa_luz(caixa):
+class caixa_temperatura(caixa):
     """
 
     """
     def __init__(self):
-        self.imagem = pygame.image.load("Imagens/luz.gif").convert()
+        self.imagem = pygame.image.load("Imagens/temperatura.gif").convert()
         self.rect = 0
         self.posicao = (0, 0)
 
-        self.imagem_selecao = pygame.image.load("Imagens/Caixa_luz.gif").convert()
+        self.imagem_selecao = pygame.image.load("Imagens/caixa_temp.gif").convert()
         self.opcoes = [True, False]
 
         self.tempo = 0.0
@@ -36,18 +36,18 @@ class caixa_luz(caixa):
             fonte = pygame.font.Font("comic.ttf", 20)
             #Aqui vão os textos
             if self.opcoes[0] == True:
-                texto1 = fonte.render('Segue a', True, (0, 0, 0))
+                texto1 = fonte.render('Segue o', True, (0, 0, 0))
                 SCREEN.blit(texto1, (self.posicao[0]-posx + 15, self.posicao[1] + 5))
                 fonte = pygame.font.Font("comic.ttf", 25)
-                texto2 = fonte.render('Luz', True, (0, 0, 0))
-                SCREEN.blit(texto2, (self.posicao[0]-posx + 32, self.posicao[1] + 30))
+                texto2 = fonte.render('calor', True, (0, 0, 0))
+                SCREEN.blit(texto2, (self.posicao[0]-posx + 20, self.posicao[1] + 30))
 
             elif self.opcoes[1] == True:
-                texto1 = fonte.render('Foge da', True, (0, 0, 0))
+                texto1 = fonte.render('Foge do', True, (0, 0, 0))
                 SCREEN.blit(texto1, (self.posicao[0]-posx + 15, self.posicao[1] + 5))
                 fonte = pygame.font.Font("comic.ttf", 25)
-                texto2 = fonte.render('Luz', True, (0, 0, 0))
-                SCREEN.blit(texto2, (self.posicao[0]-posx + 32, self.posicao[1] + 30))
+                texto2 = fonte.render('calor', True, (0, 0, 0))
+                SCREEN.blit(texto2, (self.posicao[0]-posx + 20, self.posicao[1] + 30))
 
 
             #Texto do tempo
@@ -139,7 +139,7 @@ class caixa_luz(caixa):
                         self.escreve = self.escreve[0:(tamanho-1)]
 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    
+
                     if botoes_opcoes[0].collidepoint(event.pos):
                         colidiu = True
                         self.opcoes[0] = not(self.opcoes[0])

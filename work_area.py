@@ -10,6 +10,8 @@ from caixas.caixa_luz import caixa_luz
 from caixas.caixa_motor import caixa_motor
 from caixas.caixa_tempo import caixa_tempo
 from caixas.caixa_toque import caixa_toque
+from caixas.caixa_temperatura import caixa_temperatura
+from caixas.caixa_buzzer import caixa_buzzer
 
 class Work_Area(object):
     def __init__(self):
@@ -71,6 +73,16 @@ class Work_Area(object):
                 caixa.troca_posicao(self.posicao_vazia)
                 caixa.events(SCREEN, self.posicao_x)
 
+            elif ID_CAIXA == 11: #ID da temperatura
+                caixa = caixa_temperatura()
+                caixa.troca_posicao(self.posicao_vazia)
+                caixa.events(SCREEN, self.posicao_x)
+
+            elif ID_CAIXA == 12: #ID do buzzer
+                caixa = caixa_buzzer()
+                caixa.troca_posicao(self.posicao_vazia)
+                caixa.events(SCREEN, self.posicao_x)
+            
             self.lista_caixas.append( caixa )
             self.posicao_vazia = (self.posicao_vazia[0]+150, 150)
             self.caixa_vazia = Image("Imagens/Caixa.gif", (self.posicao_vazia[0]-self.posicao_x,self.posicao_vazia[1]))

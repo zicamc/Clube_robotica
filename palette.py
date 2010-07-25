@@ -21,15 +21,15 @@ class Palette(object):
         self.imgPalette.add_botao("Imagens/botao_motor.gif","Imagens/Motor.gif",(661,128),1)
         self.imgPalette.add_botao("Imagens/botao_LED.gif","Imagens/LED.gif",(661,217),2)
         self.imgPalette.add_botao("Imagens/botao_toque.gif","Imagens/Toque.gif",(661,319),3)
+        self.imgPalette.add_botao("Imagens/botao_buzzer.gif","Imagens/buzzer.gif",(661,400),12)     #TODO: ID DO BUZZER é 12
         self.lista_palette.append(self.imgPalette)
 
         #Criando palette vermelha
-        self.imgPalette = Imagem_palette("Imagens/Palette/back_vermelho.gif","Imagens/aba_vermelha.gif",(621,144))
-        self.imgPalette.add_botao("Imagens/botao_luz.gif","Imagens/luz.gif",(661,31),10) #TODO: ID DA LUZ É 5
-
-        #Adicionando os botões (Por enquanto não tem botões)
-
+        self.imgPalette = Imagem_palette("Imagens/Palette/back_vermelho.gif","Imagens/aba_vermelha.gif",(620,144))
+        self.imgPalette.add_botao("Imagens/botao_luz.gif","Imagens/luz.gif",(661,31),10)            #TODO: ID DA LUZ É 10
+        self.imgPalette.add_botao("Imagens/botao_temp.gif","Imagens/temperatura.gif",(661,128),11)  #TODO: ID DA Temperatura é 11
         self.lista_palette.append(self.imgPalette)
+
         self.imgPalette = 0
         self.troca_palette = 0
         self.seleciona_caixa = 0

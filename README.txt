@@ -1,3 +1,14 @@
+Data 25/07/2010
+=======> Tarefas <=======
+    Feitas:
+    -> Adicao da caixa_buzzer
+    -> Adicao da caixa_temperatura
+    -> Finalização da caixa_luz
+
+    Idéias:
+    -> tempo inteligente (centralização devido ao numero de caracteres
+    -> Melhoria da entrada dos tempos
+
 Data 18/07/2010
 =======> Tarefas <=======
     Feitas:
