@@ -22,7 +22,6 @@ class Image(object):
         self.pos = posicao
         self.rect_image = screen.blit(self.image, posicao)
 
-
 class RetanguloP(object):
     """
     Aqui estão todas os métodos nessesários para o uso da palette
@@ -51,7 +50,6 @@ class RetanguloP(object):
         """
         Está será a função que irá trocar a palette, eu acho
         """
-        print "Será que vai funcionar"
         self.image.show(screen)
 
     def return_caixa(self):
@@ -65,8 +63,6 @@ class RetanguloP(object):
         Oi
         """
         return self.ID
-
-
 
 class Imagem_palette(object):
     """

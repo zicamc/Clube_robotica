@@ -2,7 +2,11 @@
 import sys
 import pygame
 import pygame.font
-from caixa import caixa 
+from caixa import caixa
+from configuracoes import config_caixa
+from configuracoes import config_selecao
+from configuracoes import all_config
+
 pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
@@ -14,8 +18,16 @@ class caixa_led(caixa):
         self.imagem = pygame.image.load("Imagens/LED.gif").convert()
         self.rect = 0
         self.posicao = (0, 0)
+        self.lingua = all_config.data['lingua']
 
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_led.gif").convert()
+        numero = int(config_selecao.data['caixa_led']['numero'])
+        for i in range(numero):
+            fonte = pygame.font.Font("comic.ttf", config_selecao.data['caixa_led'][self.lingua][i]['tamanho'])
+            texto = fonte.render(config_selecao.data['caixa_led'][self.lingua][i]['texto'], True, (0, 0, 0))
+            pos = eval(config_selecao.data['caixa_led'][self.lingua][i]['pos'])
+            self.imagem_selecao.blit(texto,pos)
+
         self.opcoes = [True, False]
         self.leds = [False, False, False]
         """ """
@@ -28,47 +40,27 @@ class caixa_led(caixa):
     def show(self, SCREEN, posx):
         
         if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
-            font = pygame.font.Font("comic.ttf", 25)
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
 
-            if self.opcoes[0] == True:
-                texto = font.render("Liga", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 25))
-            else:
-                texto = font.render("Desliga", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 4, self.posicao[1] + 25))
-            
-            font = pygame.font.Font("comic.ttf", 20)
+            for i in range(len(self.opcoes)):
+                if self.opcoes[i] == True:
+                    break
+            numero = int(config_caixa.data['caixa_led'][self.lingua]['opcoes'][i]['numero'])
 
-            if self.leds[0] == True and self.leds[1] == True and self.leds[2] == True :
-                texto = font.render("1,2 e 3", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 10, self.posicao[1] + 60))
+            for a in range(numero):
+                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_led'][self.lingua]['opcoes'][i][a]['tamanho'])
+                texto = fonte.render(config_caixa.data['caixa_led'][self.lingua]['opcoes'][i][a]['texto'], True, (0, 0, 0))
+                pos = eval(config_caixa.data['caixa_led'][self.lingua]['opcoes'][i][a]['pos'])
+                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
 
-            elif self.leds[0] == True and self.leds[1] == True:
-                texto = font.render("1 e 2", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 60))
+            i = self.leds[0] + self.leds[1]*2 + self.leds[2]*4
+            numero = int(config_caixa.data['caixa_led'][self.lingua]['selecao'][i]['numero'])
 
-            elif self.leds[0] == True and self.leds[2] == True:
-                texto = font.render("1 e 3", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
-
-            elif self.leds[1] == True and self.leds[2] == True:
-                texto = font.render("2 e 3", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
-
-            elif self.leds[0] == True:
-                texto = font.render("1", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 40, self.posicao[1] + 60))
-            
-            elif self.leds[1] == True:
-                texto = font.render("2", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 40, self.posicao[1] + 60))
-            
-            elif self.leds[2] == True:
-                texto = font.render("3", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 40, self.posicao[1] + 60))
-            
-            
+            for a in range(numero):
+                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_led'][self.lingua]['selecao'][i][a]['tamanho'])
+                texto = fonte.render(config_caixa.data['caixa_led'][self.lingua]['selecao'][i][a]['texto'], True, (0, 0, 0))
+                pos = eval(config_caixa.data['caixa_led'][self.lingua]['selecao'][i][a]['pos'])
+                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
 
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),
@@ -102,6 +94,7 @@ class caixa_led(caixa):
 
         botoes_opcoes = (pygame.draw.rect(SCREEN, (0, 0, 0, 0), opcao1),
                          pygame.draw.rect(SCREEN, (0, 0, 0, 0), opcao2))
+
 
         botoes_leds = (pygame.draw.rect(SCREEN, (0, 0, 0, 0), escolha1),
                        pygame.draw.rect(SCREEN, (0, 0, 0, 0), escolha2),

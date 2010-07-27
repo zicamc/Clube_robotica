@@ -1,0 +1,163 @@
+caixa_inicio:
+  pt-br:
+    #Só modifique as informações do texto
+    texto: "Inicio"
+    tamanho: 25
+    pos: (10,5)
+  en-us:
+    texto: "Go"
+    tamanho: 30
+    pos: (25,0)
+
+caixa_motor:
+  pt-br:
+    #Texto parte1
+    0:
+      numero: 3
+      0:
+        texto: "Anda"
+        tamanho: 25
+        pos: (15,5)
+      1:
+        texto: "Para"
+        tamanho: 25
+        pos: (20,30)
+      2:
+        texto: "Frente"
+        tamanho: 25
+        pos: (10,55)
+    #Texto parte2
+    1:
+      numero: 3
+      0:
+        texto: "Girar"
+        tamanho: 25
+        pos: (25,5)
+      1:
+        texto: "Para"
+        tamanho: 25
+        pos: (25,30)
+      2:
+        texto: "Esquerda"
+        tamanho: 20
+        pos: (10,55)
+    #Texto parte3
+    2:
+      numero: 3
+      0:
+        texto: "Girar"
+        tamanho: 25
+        pos: (25,5)
+      1:
+        texto: "Para"
+        tamanho: 25
+        pos: (25,30)
+      2:
+        texto: "Direita"
+        tamanho: 25
+        pos: (10,55)
+    #Texto parte4
+    3:
+      numero: 1
+      0:
+        texto: "Parar"
+        tamanho: 35
+        pos: (5,25)
+  en-us:
+
+caixa_led:
+  pt-br:
+
+    opcoes:
+      0:
+        numero: 1
+        0:
+          texto: "Liga"
+          tamanho: 25
+          pos: (25,-5)
+      1:
+        numero: 1
+        0:
+          texto: "Desliga"
+          tamanho: 25
+          pos: (10,-3)
+
+    selecao:
+      1:
+        numero: 2
+        0:
+          texto: "LED"
+          tamanho: 25
+          pos: (25,25)
+        1:
+          texto: "1"
+          tamanho: 25
+          pos: (42,60)
+      2:
+        numero: 2
+        0:
+          texto: "LED"
+          tamanho: 25
+          pos: (25,25)
+        1:
+          texto: "2"
+          tamanho: 25
+          pos: (42,60)
+      3:
+        numero: 2
+        0:
+          texto: "LEDS"
+          tamanho: 25
+          pos: (18,25)
+        1:
+          texto: "1 e 2"
+          tamanho: 25
+          pos: (20,60)
+      4:
+        numero: 2
+        0:
+          texto: "LED"
+          tamanho: 25
+          pos: (25,25)
+        1:
+          texto: "3"
+          tamanho: 25
+          pos: (42,60)
+      5:
+        numero: 2
+        0:
+          texto: "LEDS"
+          tamanho: 25
+          pos: (18,25)
+        1:
+          texto: "1 e 3"
+          tamanho: 25
+          pos: (20,60)
+      6:
+        numero: 2
+        0:
+          texto: "LEDS"
+          tamanho: 25
+          pos: (18,25)
+        1:
+          texto: "2 e 3"
+          tamanho: 25
+          pos: (20,60)
+      7:
+        numero: 2
+        0:
+          texto: "LEDS"
+          tamanho: 25
+          pos: (18,25)
+        1:
+          texto: "1, 2 e 3"
+          tamanho: 20
+          pos: (10,60)
+
+caixa_luz:
+
+caixa_buzzer:
+
+caixa_temperatura:
+
+caixa_toque:

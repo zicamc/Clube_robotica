@@ -2,7 +2,12 @@
 import sys
 import pygame
 import pygame.font
+import yaml
 from caixa import caixa
+from configuracoes import config_caixa
+from configuracoes import config_selecao
+from configuracoes import all_config
+
 pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
@@ -15,8 +20,17 @@ class caixa_motor(caixa):
         self.imagem = pygame.image.load("Imagens/Motor.gif").convert()
         self.rect = 0
         self.posicao = (0, 0)
+        self.lingua = all_config.data['lingua']
 
+        #Cria imagem motor conforme selecao
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_motor.gif").convert()
+        numero = int(config_selecao.data['caixa_motor']['numero'])
+        for i in range(numero):
+            fonte = pygame.font.Font("comic.ttf", config_selecao.data['caixa_motor'][self.lingua][i]['tamanho'])
+            texto = fonte.render(config_selecao.data['caixa_motor'][self.lingua][i]['texto'], True, (0, 0, 0))
+            pos = eval(config_selecao.data['caixa_motor'][self.lingua][i]['pos'])
+            self.imagem_selecao.blit(texto,pos)
+
         self.opcoes = [False, False, False, False]
         """ """
 
@@ -28,39 +42,20 @@ class caixa_motor(caixa):
     def show(self, SCREEN, posx):
         """ """
         if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
-            font = pygame.font.Font("comic.ttf", 25)
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
+            
+            for i in range(len(self.opcoes)):
+                if self.opcoes[i] == True:
+                    break
 
-            if self.opcoes[0] == True:
-                texto1 = font.render("Anda", True, (0, 0, 0))
-                texto2 = font.render("Para", True, (0, 0, 0))
-                texto3 = font.render("Frente", True, (255, 255, 255))
-                SCREEN.blit(texto1, (self.posicao[0]-posx + 15, self.posicao[1] + 5))
-                SCREEN.blit(texto2, (self.posicao[0]-posx + 20, self.posicao[1] + 30))
-                SCREEN.blit(texto3, (self.posicao[0]-posx + 10, self.posicao[1] + 55))
+            numero = config_caixa.data['caixa_motor'][self.lingua][i]['numero']
 
-            elif self.opcoes[1] == True:
-                texto1 = font.render("Gira", True, (0, 0, 0))
-                texto2 = font.render("Para", True, (0, 0, 0))
-                font = pygame.font.Font("comic.ttf", 20)
-                texto3 = font.render("Esquerda", True, (255, 255, 255))
-                SCREEN.blit(texto1, (self.posicao[0]-posx + 25, self.posicao[1] + 5))
-                SCREEN.blit(texto2, (self.posicao[0]-posx + 25, self.posicao[1] + 30))
-                SCREEN.blit(texto3, (self.posicao[0]-posx + 10, self.posicao[1] + 55))
-
-            elif self.opcoes[2] == True:
-                texto1 = font.render("Gira", True, (0, 0, 0))
-                texto2 = font.render("Para", True, (0, 0, 0))
-                texto3 = font.render("Direita", True, (255, 255, 255))
-                SCREEN.blit(texto1, (self.posicao[0]-posx + 25, self.posicao[1] + 5))
-                SCREEN.blit(texto2, (self.posicao[0]-posx + 25, self.posicao[1] + 30))
-                SCREEN.blit(texto3, (self.posicao[0]-posx + 10, self.posicao[1] + 55))
-
-            elif self.opcoes[3] == True:
-                font = pygame.font.Font("comic.ttf", 35)
-                texto1 = font.render("Parar", True, (255, 0, 0))
-                SCREEN.blit(texto1, (self.posicao[0]-posx + 5, self.posicao[1] + 25))
-
+            for a in range(numero):
+                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_motor'][self.lingua][i][a]['tamanho'])
+                texto = fonte.render(config_caixa.data['caixa_motor'][self.lingua][i][a]['texto'], True, (0, 0, 0))
+                pos = eval(config_caixa.data['caixa_motor'][self.lingua][i][a]['pos'])
+                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
+                
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),
                              (self.posicao[0]-posx + 125, self.posicao[1] + 50), 15)

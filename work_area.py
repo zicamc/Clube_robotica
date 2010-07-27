@@ -89,7 +89,6 @@ class Work_Area(object):
             if ( self.posicao_vazia[0] - self.posicao_x > 500):
                 self.posicao_x = self.posicao_x + 300
 
-
     def modifica_caixa(self,SCREEN,posicao):
         """
 
@@ -102,8 +101,6 @@ class Work_Area(object):
                     variacao = (pos_caixa[0] - self.posicao_x) - 310
                     self.modifica_posx(self.posicao_x + variacao)
                     self.mostra_workarea(SCREEN)
-
-                pygame.display.update((0,0,620,600))
                 self.lista_caixas[i].events(SCREEN, self.posicao_x)
                 return 1
         return 0
@@ -115,14 +112,11 @@ class Work_Area(object):
         for i in range(tamanho):
             if self.lista_caixas[i].colide(posicao) == 1:
                 self.lista_caixas.pop(i)
-                while i < tamanho:
-                    try:
-                        pos = self.lista_caixas[i].retorna_pos()
-                        self.lista_caixas[i].troca_posicao((pos[0]-150,pos[1]))
-                        i = i + 1
-                    except:
-                        print "Não foi possivel a retira da caixa"
-                        i = i + 1
+                while i < tamanho - 1:
+                    pos = self.lista_caixas[i].retorna_pos()
+                    self.lista_caixas[i].troca_posicao((pos[0]-150,pos[1]))
+                    i = i + 1
+
                 self.posicao_vazia = (self.posicao_vazia[0]-150,self.posicao_vazia[1])
                 return 1
 

@@ -122,5 +122,3 @@ class tela(object):
                         self.objWorkArea.mostra_workarea(self.SCREEN)
                         self.objPalette.mostra_palette(self.SCREEN)
                         pygame.display.update()
-
-

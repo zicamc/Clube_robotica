@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 __author__="zeck"
 
 import pygame
@@ -31,4 +30,3 @@ while 1:
     CLOCK.tick(5)
     screen.acoes()
     treat_events()
-    

@@ -1,0 +1,81 @@
+caixa_motor:
+  numero: 5
+  pt-br:
+    #Texto parte1
+    0:
+      texto: "Para frente"
+      tamanho: 20
+      pos: (29 , 23)
+    #Texto parte2
+    1:
+      texto: "Gira esquerda"
+      tamanho: 17
+      pos: (29,50)
+    #Texto parte3
+    2:
+      texto: "Gira direita"
+      tamanho: 18
+      pos: (29,74)
+    3:
+      texto: "Parar"
+      tamanho: 22
+      pos: (29,94)
+    4:
+      texto: "Ação"
+      tamanho: 25
+      pos: (50,-5)
+
+  en-us:
+    #Texto parte1
+    0:
+      texto: "Go front"
+      tamanho: 20
+      pos: (29,23)
+    #Texto parte2
+    1:
+      texto: "left"
+      tamanho: 17
+      pos: (29,50)
+    #Texto parte3
+    2:
+      texto: "right"
+      tamanho: 18
+      pos: (29,74)
+    3:
+      texto: "Stop"
+      tamanho: 22
+      pos: (29,94)
+
+caixa_led:
+  numero: 7
+  pt-br:
+    0:
+      texto: "Ação"
+      tamanho: 25
+      pos: (50,-5)
+    1:
+      texto: "Liga"
+      tamanho: 25
+      pos: (37,22)
+    2:
+      texto: "Desliga"
+      tamanho: 22
+      pos: (37,47)
+    3:
+      texto: "Led's"
+      tamanho: 25
+      pos: (50,73)
+    4:
+      texto: "LED 1"
+      tamanho: 20
+      pos: (37,97)
+    5:
+      texto: "LED 2"
+      tamanho: 20
+      pos: (37,115)
+    6:
+      texto: "LED 3"
+      tamanho: 20
+      pos: (37,133)
+
+  en-us:
