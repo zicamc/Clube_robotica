@@ -3,6 +3,10 @@ import sys
 import pygame
 import pygame.font
 from caixa import caixa
+from configuracoes import config_caixa
+from configuracoes import config_selecao
+from configuracoes import all_config
+
 pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
@@ -17,8 +21,17 @@ class caixa_temperatura(caixa):
         self.imagem = pygame.image.load("Imagens/temperatura.gif").convert()
         self.rect = 0
         self.posicao = (0, 0)
+        self.lingua = all_config.data['lingua']
 
         self.imagem_selecao = pygame.image.load("Imagens/caixa_temp.gif").convert()
+
+        numero = int(config_selecao.data['caixa_temperatura']['numero'])
+        for i in range(numero):
+            fonte = pygame.font.Font("comic.ttf", config_selecao.data['caixa_temperatura'][self.lingua][i]['tamanho'])
+            texto = fonte.render(config_selecao.data['caixa_temperatura'][self.lingua][i]['texto'], True, (0, 0, 0))
+            pos = eval(config_selecao.data['caixa_temperatura'][self.lingua][i]['pos'])
+            self.imagem_selecao.blit(texto,pos)
+
         self.opcoes = [True, False]
 
         self.tempo = 0.0
@@ -35,20 +48,18 @@ class caixa_temperatura(caixa):
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
             fonte = pygame.font.Font("comic.ttf", 20)
             #Aqui vão os textos
-            if self.opcoes[0] == True:
-                texto1 = fonte.render('Segue o', True, (0, 0, 0))
-                SCREEN.blit(texto1, (self.posicao[0]-posx + 15, self.posicao[1] + 5))
-                fonte = pygame.font.Font("comic.ttf", 25)
-                texto2 = fonte.render('calor', True, (0, 0, 0))
-                SCREEN.blit(texto2, (self.posicao[0]-posx + 20, self.posicao[1] + 30))
 
-            elif self.opcoes[1] == True:
-                texto1 = fonte.render('Foge do', True, (0, 0, 0))
-                SCREEN.blit(texto1, (self.posicao[0]-posx + 15, self.posicao[1] + 5))
-                fonte = pygame.font.Font("comic.ttf", 25)
-                texto2 = fonte.render('calor', True, (0, 0, 0))
-                SCREEN.blit(texto2, (self.posicao[0]-posx + 20, self.posicao[1] + 30))
+            for i in range(len(self.opcoes)):
+                if self.opcoes[i] == True:
+                    break
 
+            numero = int(config_caixa.data['caixa_luz'][self.lingua][i]['numero'])
+
+            for a in range(numero):
+                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_temperatura'][self.lingua][i][a]['tamanho'])
+                texto = fonte.render(config_caixa.data['caixa_temperatura'][self.lingua][i][a]['texto'], True, (0, 0, 0))
+                pos = eval(config_caixa.data['caixa_temperatura'][self.lingua][i][a]['pos'])
+                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
 
             #Texto do tempo
             texto = fonte.render(self.escreve[1:], True, (0, 0, 0))

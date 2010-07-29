@@ -3,6 +3,10 @@ import sys
 import pygame
 import pygame.font
 from caixa import caixa
+from configuracoes import config_caixa
+from configuracoes import config_selecao
+from configuracoes import all_config
+
 pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
@@ -14,8 +18,18 @@ class caixa_toque(caixa):
         self.imagem = pygame.image.load("Imagens/Toque.gif").convert()
         self.rect = 0
         self.posicao = (0, 0)
+        self.lingua = all_config.data['lingua']
 
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_toque.gif").convert()
+
+        numero = int(config_selecao.data['caixa_toque']['numero'])
+        for i in range(numero):
+            fonte = pygame.font.Font("comic.ttf", config_selecao.data['caixa_toque'][self.lingua][i]['tamanho'])
+            texto = fonte.render(config_selecao.data['caixa_toque'][self.lingua][i]['texto'], True, (0, 0, 0))
+            pos = eval(config_selecao.data['caixa_toque'][self.lingua][i]['pos'])
+            self.imagem_selecao.blit(texto,pos)
+
+
         self.opcoes = [True, False]
         self.sensores = [False, False]
         """ """
@@ -27,30 +41,25 @@ class caixa_toque(caixa):
 
     def show(self, SCREEN, posx):
         if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
-            font = pygame.font.Font("comic.ttf", 20)
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
 
-            if self.opcoes[0] == True:
-                texto = font.render("Apertar", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 10, self.posicao[1] + 25))
-            else:
-                font = pygame.font.Font("comic.ttf", 17)
-                texto = font.render("Desapertar", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 4, self.posicao[1] + 30))
+            for i in range(len(self.opcoes)):
+                if self.opcoes[i] == True:
+                    break
 
-            font = pygame.font.Font("comic.ttf", 20)
+            fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_toque'][self.lingua]['opcoes'][i]['tamanho'])
+            texto = fonte.render(config_caixa.data['caixa_toque'][self.lingua]['opcoes'][i]['texto'], True, (0, 0, 0))
+            pos = eval(config_caixa.data['caixa_toque'][self.lingua]['opcoes'][i]['pos'])
+            SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
 
-            if self.sensores[0] == True and self.sensores[1] == True:
-                texto = font.render("Dir & Esq", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 4, self.posicao[1] + 60))
+            i = self.sensores[0] + self.sensores[1]*2
+            numero = int(config_caixa.data['caixa_toque'][self.lingua]['selecao'][i]['numero'])
 
-            elif self.sensores[0] == True and self.sensores[1] == False:
-                texto = font.render("Dir", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
-
-            elif self.sensores[1] == True and self.sensores[0] == False:
-                texto = font.render("Esq", True, (0, 0, 0))
-                SCREEN.blit(texto, (self.posicao[0]-posx + 33, self.posicao[1] + 60))
+            for a in range(numero):
+                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_toque'][self.lingua]['selecao'][i][a]['tamanho'])
+                texto = fonte.render(config_caixa.data['caixa_toque'][self.lingua]['selecao'][i][a]['texto'], True, (0, 0, 0))
+                pos = eval(config_caixa.data['caixa_toque'][self.lingua]['selecao'][i][a]['pos'])
+                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
 
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),

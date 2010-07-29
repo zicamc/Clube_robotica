@@ -79,3 +79,83 @@ caixa_led:
       pos: (37,133)
 
   en-us:
+
+caixa_luz:
+  numero: 4
+  pt-br:
+    0:
+      texto: "Ação"
+      tamanho: 25
+      pos: (50,-5)
+    1:
+      texto: "Segue a luz"
+      tamanho: 17
+      pos: (37,25)
+    2:
+      texto: "Foge da luz"
+      tamanho: 17
+      pos: (37,50)
+    3:
+      texto: "Tempo:"
+      tamanho: 25
+      pos: (25,73)
+
+caixa_buzzer:
+  numero: 1
+  pt-br:
+    0:
+      texto: "Buzina:"
+      tamanho: 25
+      pos: (15,0)
+
+  en-us:
+
+caixa_temperatura:
+  numero: 4
+  pt-br:
+    0:
+      texto: "Ação"
+      tamanho: 25
+      pos: (45,-3)
+    1:
+      texto: "Segue o calor"
+      tamanho: 16
+      pos: (35,27)
+    2:
+      texto: "Foge do calor"
+      tamanho: 16
+      pos: (35,52)
+    3:
+      texto: "Tempo:"
+      tamanho: 25
+      pos: (25,73)
+  
+  en-us:
+
+caixa_toque:
+  numero: 6
+  pt-br:
+    0:
+      texto: "Ação"
+      tamanho: 25
+      pos: (50,-5)
+    1:
+      texto: "Aperta"
+      tamanho: 20
+      pos: (33,27)
+    2:
+      texto: "Desaperta"
+      tamanho: 22
+      pos: (33,49)
+    3:
+      texto: "Sensores:"
+      tamanho: 20
+      pos: (25,72)
+    4:
+      texto: "Esquerda"
+      tamanho: 20
+      pos: (37,97)
+    5:
+      texto: "Direita"
+      tamanho: 20
+      pos: (37,120)

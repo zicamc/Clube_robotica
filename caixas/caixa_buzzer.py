@@ -3,6 +3,10 @@ import sys
 import pygame
 import pygame.font
 from caixa import caixa
+from configuracoes import config_caixa
+from configuracoes import config_selecao
+from configuracoes import all_config
+
 pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
@@ -17,8 +21,15 @@ class caixa_buzzer(caixa):
         self.imagem = pygame.image.load("Imagens/buzzer.gif").convert()
         self.rect = 0
         self.posicao = (0, 0)
+        self.lingua = all_config.data['lingua']
 
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_buzzer.gif").convert()
+
+        fonte = pygame.font.Font("comic.ttf", config_selecao.data['caixa_buzzer'][self.lingua][0]['tamanho'])
+        texto = fonte.render(config_selecao.data['caixa_buzzer'][self.lingua][0]['texto'], True, (0, 0, 0))
+        pos = eval(config_selecao.data['caixa_buzzer'][self.lingua][0]['pos'])
+        self.imagem_selecao.blit(texto,pos)
+
         self.selecao_visivel = True
         self.tempo = 0.0
         self.escreve = "0"
@@ -44,8 +55,10 @@ class caixa_buzzer(caixa):
 
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
 
-            texto = font.render('Buzina', True, (0, 0, 0))
-            SCREEN.blit(texto, (self.posicao[0]-posx + 5, self.posicao[1] + 10))
+            fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_buzzer'][self.lingua]['tamanho'])
+            texto = fonte.render(config_caixa.data['caixa_buzzer'][self.lingua]['texto'], True, (0, 0, 0))
+            pos = eval(config_caixa.data['caixa_buzzer'][self.lingua]['pos'])
+            SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
 
             texto = font.render(self.escreve[1:], True, (0, 0, 0))
             SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 50))

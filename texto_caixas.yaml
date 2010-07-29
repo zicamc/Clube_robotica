@@ -67,7 +67,6 @@ caixa_motor:
 
 caixa_led:
   pt-br:
-
     opcoes:
       0:
         numero: 1
@@ -155,9 +154,97 @@ caixa_led:
           pos: (10,60)
 
 caixa_luz:
+  pt-br:
+    0:
+      numero: 2
+      0:
+        texto: "Segue a"
+        tamanho: 20
+        pos: (10,10)
+      1:
+        texto: "luz"
+        tamanho: 20
+        pos: (35,35)
+    1:
+      numero: 2
+      0:
+        texto: "Foge da"
+        tamanho: 20
+        pos: (10,10)
+      1:
+        texto: "luz"
+        tamanho: 20
+        pos: (35,35)
 
 caixa_buzzer:
+  pt-br:
+    texto: "Buzina"
+    tamanho: 30
+    pos: (5,5)
 
 caixa_temperatura:
+  pt-br:
+    0:
+      numero: 2
+      0:
+        texto: "Segue o"
+        tamanho: 20
+        pos: (10,10)
+      1:
+        texto: "calor"
+        tamanho: 20
+        pos: (35,35)
+    1:
+      numero: 2
+      0:
+        texto: "Foge do"
+        tamanho: 20
+        pos: (10,10)
+      1:
+        texto: "calor"
+        tamanho: 20
+        pos: (35,35)
 
 caixa_toque:
+  pt-br:
+    opcoes:
+      0:
+        texto: "Aperta"
+        tamanho: 25
+        pos: (10,-5)
+      1:
+        texto: "Desaperta"
+        tamanho: 18
+        pos: (5,0)
+
+    selecao:
+      1:
+        numero: 2
+        0:
+          texto: "Sensor"
+          tamanho: 25
+          pos: (10,25)
+        1:
+          texto: "Dir"
+          tamanho: 25
+          pos: (35,60)
+      2:
+        numero: 2
+        0:
+          texto: "Sensor"
+          tamanho: 25
+          pos: (10,25)
+        1:
+          texto: "Esq"
+          tamanho: 25
+          pos: (35,60)
+      3:
+        numero: 2
+        0:
+          texto: "Sensores"
+          tamanho: 20
+          pos: (5,25)
+        1:
+          texto: "Dir e Esq"
+          tamanho: 20
+          pos: (5,60)
