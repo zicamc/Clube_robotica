@@ -1,3 +1,8 @@
+Data 01/08/2010
+=======> Tarefas <=======
+    Feitas:
+    => Centralização do texto dos tempos, agora não tem mais uma posicao fixa
+
 Data 25/07/2010
 =======> Tarefas <=======
     Feitas:

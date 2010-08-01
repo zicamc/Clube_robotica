@@ -2,7 +2,6 @@
 import sys
 import pygame
 import pygame.font
-import yaml
 from caixa import caixa
 from configuracoes import config_caixa
 from configuracoes import config_selecao
@@ -11,9 +10,11 @@ from configuracoes import all_config
 pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
+
 #===============================================================================
 #                   CAIXA MOTOR
 #===============================================================================
+
 class caixa_motor(caixa):
     def __init__(self):
         """ """

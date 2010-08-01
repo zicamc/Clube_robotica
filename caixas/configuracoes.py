@@ -9,3 +9,6 @@ class config_selecao():
 
 class all_config():
     data = yaml.load(file("configuracoes.yaml","r"))
+
+class config_botoes:
+    data = yaml.load(file("botoes.yaml","r"))

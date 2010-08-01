@@ -60,8 +60,11 @@ class caixa_buzzer(caixa):
             pos = eval(config_caixa.data['caixa_buzzer'][self.lingua]['pos'])
             SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
 
-            texto = font.render(self.escreve[1:], True, (0, 0, 0))
-            SCREEN.blit(texto, (self.posicao[0]-posx + 20, self.posicao[1] + 50))
+            #Texto centralizado do buzzer
+            texto = font.render(self.escreve[1:]+"s", True, (0, 0, 0))
+            tam_text = texto.get_width()/2
+
+            SCREEN.blit(texto, (self.posicao[0]-posx+50-tam_text , self.posicao[1] + 50))
 
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),
