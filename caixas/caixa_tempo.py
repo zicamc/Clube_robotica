@@ -3,6 +3,9 @@ import sys
 import pygame
 import pygame.font
 from caixa import caixa
+from configuracoes import config_caixa
+from configuracoes import all_config
+
 pygame.font.init()
 CLOCK = pygame.time.Clock()
 fonte = pygame.font.Font("comic.ttf", 25)
@@ -17,6 +20,8 @@ class caixa_tempo(caixa):
         self.imagem = pygame.image.load("Imagens/delay.gif").convert()
         self.rect = 0
         self.posicao = (0, 0)
+
+        self.lingua = all_config.data['lingua']
 
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_tempo.gif").convert()
         self.selecao_visivel = True
@@ -44,10 +49,13 @@ class caixa_tempo(caixa):
 
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
 
+            fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_tempo'][self.lingua]['tamanho'])
+            texto = fonte.render(config_caixa.data['caixa_tempo'][self.lingua]['texto'], True, (0, 0, 0))
+            SCREEN.blit(texto, (self.posicao[0]-posx +50 - texto.get_width()/2, self.posicao[1]))
+
             #Texto do tempo centralizado
             texto = font.render(self.escreve[1:]+"s", True, (0, 0, 0))
-            tam_text = texto.get_width()/2
-            SCREEN.blit(texto, (self.posicao[0]-posx+50-tam_text , self.posicao[1] + 50))
+            SCREEN.blit(texto, (self.posicao[0]- posx + 50 - texto.get_width()/2 , self.posicao[1] + 50))
 
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),
@@ -86,6 +94,10 @@ class caixa_tempo(caixa):
                       (self.posicao[0]-posx + 24, self.posicao[1] + 192), (self.posicao[0]-posx + 78, self.posicao[1] + 192))
         button_ok = pygame.draw.polygon(SCREEN, (0, 0, 0, 0), list_point)
         SCREEN.blit(self.imagem_selecao, (self.posicao[0]-posx-25, self.posicao[1] + 100))
+
+        fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_tempo'][self.lingua]['tamanho'])
+        texto = fonte.render(config_caixa.data['caixa_tempo'][self.lingua]['texto'], True, (0, 0, 0))
+        SCREEN.blit(texto, (self.posicao[0]-posx +50 - texto.get_width()/2, self.posicao[1]))
 
         TELA = SCREEN.copy()
 

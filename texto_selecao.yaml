@@ -33,18 +33,22 @@ caixa_motor:
       pos: (29,23)
     #Texto parte2
     1:
-      texto: "left"
+      texto: "Left"
       tamanho: 17
       pos: (29,50)
     #Texto parte3
     2:
-      texto: "right"
+      texto: "Right"
       tamanho: 18
       pos: (29,74)
     3:
       texto: "Stop"
       tamanho: 22
       pos: (29,94)
+    4:
+      texto: "Action"
+      tamanho: 25
+      pos: (50,-5)
 
 caixa_led:
   numero: 7
@@ -77,8 +81,35 @@ caixa_led:
       texto: "LED 3"
       tamanho: 20
       pos: (37,133)
-
   en-us:
+    0:
+      texto: "Action"
+      tamanho: 25
+      pos: (50,-5)
+    1:
+      texto: "On"
+      tamanho: 25
+      pos: (37,22)
+    2:
+      texto: "Off"
+      tamanho: 22
+      pos: (37,47)
+    3:
+      texto: "Led's"
+      tamanho: 25
+      pos: (50,73)
+    4:
+      texto: "LED 1"
+      tamanho: 20
+      pos: (37,97)
+    5:
+      texto: "LED 2"
+      tamanho: 20
+      pos: (37,115)
+    6:
+      texto: "LED 3"
+      tamanho: 20
+      pos: (37,133)
 
 caixa_luz:
   numero: 4
@@ -100,15 +131,31 @@ caixa_luz:
       tamanho: 25
       pos: (25,73)
 
-caixa_buzzer:
-  numero: 1
-  pt-br:
-    0:
-      texto: "Buzina:"
-      tamanho: 25
-      pos: (15,0)
-
   en-us:
+    0:
+      texto: "Action"
+      tamanho: 25
+      pos: (50,-5)
+    1:
+      texto: "Follow the light"
+      tamanho: 15
+      pos: (35,26)
+    2:
+      texto: "Break out a light"
+      tamanho: 12
+      pos: (37,53)
+    3:
+      texto: "Time:"
+      tamanho: 25
+      pos: (25,73)
+
+caixa_buzzer:
+  pt-br:
+    texto: "Buzina:"
+    tamanho: 25
+  en-us:
+    texto: "Horn:"
+    tamanho: 25
 
 caixa_temperatura:
   numero: 4
@@ -131,9 +178,26 @@ caixa_temperatura:
       pos: (25,73)
   
   en-us:
+    0:
+      texto: "Action"
+      tamanho: 25
+      pos: (45,-3)
+    1:
+      texto: "Follows the heat"
+      tamanho: 15
+      pos: (35,27)
+    2:
+      texto: "Break out the heat"
+      tamanho: 15
+      pos: (35,52)
+    3:
+      texto: "Time:"
+      tamanho: 25
+      pos: (25,73)
 
 caixa_toque:
   numero: 6
+
   pt-br:
     0:
       texto: "Ação"
@@ -152,10 +216,36 @@ caixa_toque:
       tamanho: 20
       pos: (25,72)
     4:
-      texto: "Esquerda"
+      texto: "Direita"
       tamanho: 20
       pos: (37,97)
     5:
-      texto: "Direita"
+      texto: "Esquerda"
+      tamanho: 20
+      pos: (37,120)
+
+  en-us:
+    0:
+      texto: "Action"
+      tamanho: 25
+      pos: (50,-5)
+    1:
+      texto: "Squeeze"
+      tamanho: 20
+      pos: (33,27)
+    2:
+      texto: "Loosening"
+      tamanho: 20
+      pos: (33,49)
+    3:
+      texto: "Sensors:"
+      tamanho: 20
+      pos: (25,72)
+    4:
+      texto: "Right"
+      tamanho: 20
+      pos: (37,97)
+    5:
+      texto: "Left"
       tamanho: 20
       pos: (37,120)

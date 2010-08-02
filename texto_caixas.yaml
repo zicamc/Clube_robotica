@@ -9,6 +9,16 @@ caixa_inicio:
     tamanho: 30
     pos: (25,0)
 
+#Já mexi
+caixa_tempo:
+  pt-br:
+    texto: "Espera"
+    tamanho: 27
+  en-us:
+    texto: "Delay"
+    tamanho: 23
+
+#Já mexi
 caixa_motor:
   pt-br:
     #Texto parte1
@@ -17,171 +27,227 @@ caixa_motor:
       0:
         texto: "Anda"
         tamanho: 25
-        pos: (15,5)
       1:
         texto: "Para"
         tamanho: 25
-        pos: (20,30)
       2:
         texto: "Frente"
         tamanho: 25
-        pos: (10,55)
     #Texto parte2
     1:
       numero: 3
       0:
         texto: "Girar"
         tamanho: 25
-        pos: (25,5)
       1:
         texto: "Para"
         tamanho: 25
-        pos: (25,30)
       2:
         texto: "Esquerda"
         tamanho: 20
-        pos: (10,55)
     #Texto parte3
     2:
       numero: 3
       0:
         texto: "Girar"
         tamanho: 25
-        pos: (25,5)
       1:
         texto: "Para"
         tamanho: 25
-        pos: (25,30)
       2:
         texto: "Direita"
         tamanho: 25
-        pos: (10,55)
     #Texto parte4
     3:
       numero: 1
       0:
         texto: "Parar"
         tamanho: 35
-        pos: (5,25)
   en-us:
+    0:
+      numero: 3
+      0:
+        texto: "Go"
+        tamanho: 25
+      1:
+        texto: "to"
+        tamanho: 25
+      2:
+        texto: "ahead"
+        tamanho: 25
+    #Texto parte2
+    1:
+      numero: 3
+      0:
+        texto: "Rotate"
+        tamanho: 25
+      1:
+        texto: "to"
+        tamanho: 25
+      2:
+        texto: "left"
+        tamanho: 20
+    #Texto parte3
+    2:
+      numero: 3
+      0:
+        texto: "Rotate"
+        tamanho: 25
+      1:
+        texto: "to"
+        tamanho: 25
+      2:
+        texto: "right"
+        tamanho: 25
+    #Texto parte4
+    3:
+      numero: 1
+      0:
+        texto: "Stop"
+        tamanho: 35
 
+#Já fiz
 caixa_led:
   pt-br:
-    opcoes:
+    0:
+      texto: "Liga"
+      tamanho: 25
+    1:
+      texto: "Desliga"
+      tamanho: 25
+  en-us:
+    0:
+      texto: "On"
+      tamanho: 25
+    1:
+      texto: "Off"
+      tamanho: 25
+  selecao:
+    1:
+      numero: 2
       0:
-        numero: 1
-        0:
-          texto: "Liga"
-          tamanho: 25
-          pos: (25,-5)
+        texto: "LED"
+        tamanho: 25
+        pos: (25,25)
       1:
-        numero: 1
-        0:
-          texto: "Desliga"
-          tamanho: 25
-          pos: (10,-3)
-
-    selecao:
+        texto: "1"
+        tamanho: 25
+        pos: (42,60)
+    2:
+      numero: 2
+      0:
+        texto: "LED"
+        tamanho: 25
+        pos: (25,25)
       1:
-        numero: 2
-        0:
-          texto: "LED"
-          tamanho: 25
-          pos: (25,25)
-        1:
-          texto: "1"
-          tamanho: 25
-          pos: (42,60)
-      2:
-        numero: 2
-        0:
-          texto: "LED"
-          tamanho: 25
-          pos: (25,25)
-        1:
-          texto: "2"
-          tamanho: 25
-          pos: (42,60)
-      3:
-        numero: 2
-        0:
-          texto: "LEDS"
-          tamanho: 25
-          pos: (18,25)
-        1:
-          texto: "1 e 2"
-          tamanho: 25
-          pos: (20,60)
-      4:
-        numero: 2
-        0:
-          texto: "LED"
-          tamanho: 25
-          pos: (25,25)
-        1:
-          texto: "3"
-          tamanho: 25
-          pos: (42,60)
-      5:
-        numero: 2
-        0:
-          texto: "LEDS"
-          tamanho: 25
-          pos: (18,25)
-        1:
-          texto: "1 e 3"
-          tamanho: 25
-          pos: (20,60)
-      6:
-        numero: 2
-        0:
-          texto: "LEDS"
-          tamanho: 25
-          pos: (18,25)
-        1:
-          texto: "2 e 3"
-          tamanho: 25
-          pos: (20,60)
-      7:
-        numero: 2
-        0:
-          texto: "LEDS"
-          tamanho: 25
-          pos: (18,25)
-        1:
-          texto: "1, 2 e 3"
-          tamanho: 20
-          pos: (10,60)
+        texto: "2"
+        tamanho: 25
+        pos: (42,60)
+    3:
+      numero: 2
+      0:
+        texto: "LEDS"
+        tamanho: 25
+        pos: (18,25)
+      1:
+        texto: "1 e 2"
+        tamanho: 25
+        pos: (20,60)
+    4:
+      numero: 2
+      0:
+        texto: "LED"
+        tamanho: 25
+        pos: (25,25)
+      1:
+        texto: "3"
+        tamanho: 25
+        pos: (42,60)
+    5:
+      numero: 2
+      0:
+        texto: "LEDS"
+        tamanho: 25
+        pos: (18,25)
+      1:
+        texto: "1 e 3"
+        tamanho: 25
+        pos: (20,60)
+    6:
+      numero: 2
+      0:
+        texto: "LEDS"
+        tamanho: 25
+        pos: (18,25)
+      1:
+        texto: "2 e 3"
+        tamanho: 25
+        pos: (20,60)
+    7:
+      numero: 2
+      0:
+        texto: "LEDS"
+        tamanho: 25
+        pos: (18,25)
+      1:
+        texto: "1, 2 e 3"
+        tamanho: 20
+        pos: (10,60)
 
+#Já fiz
 caixa_luz:
   pt-br:
     0:
       numero: 2
       0:
         texto: "Segue a"
+        tamanho: 22
+      1:
+        texto: "luz"
+        tamanho: 22
+    1:
+      numero: 2
+      0:
+        texto: "Foge da"
+        tamanho: 22
+      1:
+        texto: "luz"
+        tamanho: 22
+  en-us:
+    0:
+      numero: 2
+      0:
+        texto: "Follow the"
         tamanho: 20
         pos: (10,10)
       1:
-        texto: "luz"
+        texto: "light"
         tamanho: 20
         pos: (35,35)
     1:
       numero: 2
       0:
-        texto: "Foge da"
+        texto: "Break out"
         tamanho: 20
         pos: (10,10)
       1:
-        texto: "luz"
+        texto: "the light"
         tamanho: 20
         pos: (35,35)
 
+#Já fiz
 caixa_buzzer:
   pt-br:
     texto: "Buzina"
     tamanho: 30
     pos: (5,5)
 
+  en-us:
+    texto: "Horn"
+    tamanho: 30
+    pos: (5,5)
+
+#Já fiz
 caixa_temperatura:
   pt-br:
     0:
@@ -189,22 +255,36 @@ caixa_temperatura:
       0:
         texto: "Segue o"
         tamanho: 20
-        pos: (10,10)
       1:
         texto: "calor"
         tamanho: 20
-        pos: (35,35)
     1:
       numero: 2
       0:
         texto: "Foge do"
         tamanho: 20
-        pos: (10,10)
       1:
         texto: "calor"
         tamanho: 20
-        pos: (35,35)
+  en-us:
+    0:
+      numero: 2
+      0:
+        texto: "Follow the"
+        tamanho: 18
+      1:
+        texto: "heat"
+        tamanho: 22
+    1:
+      numero: 2
+      0:
+        texto: "Break out"
+        tamanho: 18
+      1:
+        texto: "the heat"
+        tamanho: 18
 
+#Fazendo
 caixa_toque:
   pt-br:
     opcoes:
@@ -246,5 +326,47 @@ caixa_toque:
           pos: (5,25)
         1:
           texto: "Dir e Esq"
+          tamanho: 20
+          pos: (5,60)
+  en-us:
+    opcoes:
+      0:
+        texto: "Press"
+        tamanho: 25
+        pos: (10,-5)
+      1:
+        texto: "Loosen"
+        tamanho: 18
+        pos: (5,0)
+
+    selecao:
+      1:
+        numero: 2
+        0:
+          texto: "Sensor"
+          tamanho: 25
+          pos: (10,25)
+        1:
+          texto: "Right"
+          tamanho: 20
+          pos: (35,60)
+      2:
+        numero: 2
+        0:
+          texto: "Sensor"
+          tamanho: 25
+          pos: (10,25)
+        1:
+          texto: "Left"
+          tamanho: 25
+          pos: (35,60)
+      3:
+        numero: 2
+        0:
+          texto: "Sensors"
+          tamanho: 20
+          pos: (5,25)
+        1:
+          texto: "R and L"
           tamanho: 20
           pos: (5,60)

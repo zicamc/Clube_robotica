@@ -2,6 +2,11 @@ Data 01/08/2010
 =======> Tarefas <=======
     Feitas:
     => Centralização do texto dos tempos, agora não tem mais uma posicao fixa
+    => Tradução
+
+    Idéias:
+    => Modificação das caixas LUZ e Temperatura para o texto ficar melhor adaptdado
+
 
 Data 25/07/2010
 =======> Tarefas <=======

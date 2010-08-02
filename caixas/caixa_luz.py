@@ -48,24 +48,26 @@ class caixa_luz(caixa):
         if (self.posicao[0]-posx < 620 and self.posicao[0]-posx > -160):
             self.rect = SCREEN.blit(self.imagem, (self.posicao[0]-posx, self.posicao[1]))
             fonte = pygame.font.Font("comic.ttf", 20)
-            #Aqui vão os textos
 
             for i in range(len(self.opcoes)):
                 if self.opcoes[i] == True:
                     break
+
+            pos_y = 0
 
             numero = int(config_caixa.data['caixa_luz'][self.lingua][i]['numero'])
 
             for a in range(numero):
                 fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_luz'][self.lingua][i][a]['tamanho'])
                 texto = fonte.render(config_caixa.data['caixa_luz'][self.lingua][i][a]['texto'], True, (0, 0, 0))
-                pos = eval(config_caixa.data['caixa_luz'][self.lingua][i][a]['pos'])
-                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 50 - texto.get_width()/2 , self.posicao[1] + pos_y))
+                pos_y = pos_y + texto.get_height() - 5
 
             #Texto do tempo centralizado
-            texto = font.render(self.escreve[1:]+"s", True, (0, 0, 0))
+            fonte = pygame.font.Font("comic.ttf", 25)
+            texto = fonte.render(self.escreve[1:]+"s", True, (0, 0, 0))
             tam_text = texto.get_width()/2
-            SCREEN.blit(texto, (self.posicao[0]-posx+50-tam_text , self.posicao[1] + 50))
+            SCREEN.blit(texto, (self.posicao[0]-posx+50-tam_text , self.posicao[1] + pos_y + 10))
 
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),
@@ -164,8 +166,11 @@ class caixa_luz(caixa):
                     if botao_ok.collidepoint(event.pos):
                         # Testar se pelo menos uma selecao foi feita no sentido e nos motores, senão, trancar
                         teste_opcoes = self.opcoes[0] + self.opcoes[1]
-                        self.tempo = float(self.escreve)
-                        if teste_opcoes == 1 and self.escreve != 0.0:
+                        try:
+                            self.tempo = float(self.escreve)
+                        except:
+                            self.tempo = 0
+                        if teste_opcoes == 1 and self.tempo > 0:
                             self.selecao_visivel = False
                             condicao = True
                         else:

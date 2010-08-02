@@ -50,12 +50,17 @@ class caixa_motor(caixa):
                     break
 
             numero = config_caixa.data['caixa_motor'][self.lingua][i]['numero']
+            
+            if numero == 1:
+                pos_y = 25
+            else:
+                pos_y = 2
 
             for a in range(numero):
                 fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_motor'][self.lingua][i][a]['tamanho'])
                 texto = fonte.render(config_caixa.data['caixa_motor'][self.lingua][i][a]['texto'], True, (0, 0, 0))
-                pos = eval(config_caixa.data['caixa_motor'][self.lingua][i][a]['pos'])
-                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 50 - texto.get_width()/2 , self.posicao[1] + pos_y))
+                pos_y = pos_y + texto.get_height() - 5
                 
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),

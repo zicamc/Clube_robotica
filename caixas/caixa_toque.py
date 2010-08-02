@@ -49,8 +49,9 @@ class caixa_toque(caixa):
 
             fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_toque'][self.lingua]['opcoes'][i]['tamanho'])
             texto = fonte.render(config_caixa.data['caixa_toque'][self.lingua]['opcoes'][i]['texto'], True, (0, 0, 0))
-            pos = eval(config_caixa.data['caixa_toque'][self.lingua]['opcoes'][i]['pos'])
-            SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
+            SCREEN.blit(texto, (self.posicao[0]-posx + 50 - texto.get_width()/2, self.posicao[1]))
+            
+            pos_y = self.posicao[1] + texto.get_height() - 5
 
             i = self.sensores[0] + self.sensores[1]*2
             numero = int(config_caixa.data['caixa_toque'][self.lingua]['selecao'][i]['numero'])
@@ -58,8 +59,8 @@ class caixa_toque(caixa):
             for a in range(numero):
                 fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_toque'][self.lingua]['selecao'][i][a]['tamanho'])
                 texto = fonte.render(config_caixa.data['caixa_toque'][self.lingua]['selecao'][i][a]['texto'], True, (0, 0, 0))
-                pos = eval(config_caixa.data['caixa_toque'][self.lingua]['selecao'][i][a]['pos'])
-                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 50 - texto.get_width()/2 , pos_y)) 
+                pos_y = pos_y + texto.get_height() - 5
 
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),

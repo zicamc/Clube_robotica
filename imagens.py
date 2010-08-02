@@ -3,6 +3,11 @@
 # and open the template in the editor.
 
 import pygame
+import pygame.font
+from caixas.configuracoes import config_botoes
+from caixas.configuracoes import all_config
+
+pygame.font.init()
 
 class Image(object):
     def __init__(self, image, pos):
@@ -11,6 +16,7 @@ class Image(object):
         self.image.convert()
         self.pos = pos
         self.rect_image = 0
+        self.text = 0
 
     def show(self,screen):
         self.rect_image = screen.blit(self.image, self.pos)
@@ -22,6 +28,9 @@ class Image(object):
         self.pos = posicao
         self.rect_image = screen.blit(self.image, posicao)
 
+    def add_text(self,ID):
+        print "entrei"
+
 class RetanguloP(object):
     """
     Aqui estão todas os métodos nessesários para o uso da palette
@@ -32,7 +41,12 @@ class RetanguloP(object):
         no caso da
         """
         self.ID = ID
+        self.pos = posicao
         self.image = Image(imagem,posicao)
+        if ID == 12:
+            print "entrando"
+            self.image.add_text(ID)
+       
         self.caixa = Image(caixa,(800,600))
         
     def colide_rect(self, pos):
@@ -51,6 +65,10 @@ class RetanguloP(object):
         Está será a função que irá trocar a palette, eu acho
         """
         self.image.show(screen)
+        lingua = all_config.data['lingua']
+        fonte = pygame.font.Font("comic.ttf", config_botoes.data[self.ID][lingua]['tamanho'])
+        text = fonte.render(config_botoes.data[self.ID][all_config.data['lingua']]['texto'] , True, (0, 0, 0))
+        screen.blit(text,( self.pos[0] + 68 - text.get_width()/2 , self.pos[1] + 28 - text.get_height()/2 ))
 
     def return_caixa(self):
         """

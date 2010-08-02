@@ -45,23 +45,21 @@ class caixa_led(caixa):
             for i in range(len(self.opcoes)):
                 if self.opcoes[i] == True:
                     break
-            numero = int(config_caixa.data['caixa_led'][self.lingua]['opcoes'][i]['numero'])
 
-            for a in range(numero):
-                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_led'][self.lingua]['opcoes'][i][a]['tamanho'])
-                texto = fonte.render(config_caixa.data['caixa_led'][self.lingua]['opcoes'][i][a]['texto'], True, (0, 0, 0))
-                pos = eval(config_caixa.data['caixa_led'][self.lingua]['opcoes'][i][a]['pos'])
-                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
-
+            fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_led'][self.lingua][i]['tamanho'])
+            texto = fonte.render(config_caixa.data['caixa_led'][self.lingua][i]['texto'], True, (0, 0, 0))
+            SCREEN.blit(texto, (self.posicao[0] -posx + 50 - texto.get_width()/2 , self.posicao[1]))
+            pos_y = self.posicao[1] + texto.get_height() - 5
+            
             i = self.leds[0] + self.leds[1]*2 + self.leds[2]*4
-            numero = int(config_caixa.data['caixa_led'][self.lingua]['selecao'][i]['numero'])
+            numero = int(config_caixa.data['caixa_led']['selecao'][i]['numero'])
 
             for a in range(numero):
-                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_led'][self.lingua]['selecao'][i][a]['tamanho'])
-                texto = fonte.render(config_caixa.data['caixa_led'][self.lingua]['selecao'][i][a]['texto'], True, (0, 0, 0))
-                pos = eval(config_caixa.data['caixa_led'][self.lingua]['selecao'][i][a]['pos'])
-                SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
-
+                fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_led']['selecao'][i][a]['tamanho'])
+                texto = fonte.render(config_caixa.data['caixa_led']['selecao'][i][a]['texto'], True, (0, 0, 0))
+                SCREEN.blit(texto, (self.posicao[0]-posx + 50 - texto.get_width()/2, pos_y))
+                pos_y = pos_y + texto.get_height() - 5
+                
             pygame.draw.line(SCREEN, (0, 0, 0, 0),
                              (self.posicao[0]-posx + 100, self.posicao[1] + 50),
                              (self.posicao[0]-posx + 125, self.posicao[1] + 50), 15)

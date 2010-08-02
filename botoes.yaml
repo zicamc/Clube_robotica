@@ -1,0 +1,49 @@
+0:
+  pt-br:
+    texto: "Tempo"
+    tamanho: 40
+  en-us:
+    texto: "Delay"
+    tamanho: 40
+1:
+  pt-br:
+    texto: "Motor"
+    tamanho: 40
+  en-us:
+    texto: "Engine"
+    tamanho: 30
+2:
+  pt-br:
+    texto: "LED"
+    tamanho: 35
+  en-us:
+    texto: "LED"
+    tamanho: 35
+3:
+  pt-br:
+    texto: "Toque"
+    tamanho: 40
+  en-us:
+    texto: "Touch"
+    tamanho: 40
+10:
+  pt-br:
+    texto: "Luz"
+    tamanho: 40
+  en-us:
+    texto: "Light"
+    tamanho: 35
+11:
+  pt-br:
+    texto: "Temperatura"
+    tamanho: 20
+  en-us:
+    texto: "Temperature"
+    tamanho: 20
+12:
+  pt-br:
+    texto: "Buzina"
+    tamanho: 30
+  en-us:
+    texto: "Buzzer"
+    tamanho: 35

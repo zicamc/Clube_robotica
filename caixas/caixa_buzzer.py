@@ -25,10 +25,9 @@ class caixa_buzzer(caixa):
 
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_buzzer.gif").convert()
 
-        fonte = pygame.font.Font("comic.ttf", config_selecao.data['caixa_buzzer'][self.lingua][0]['tamanho'])
-        texto = fonte.render(config_selecao.data['caixa_buzzer'][self.lingua][0]['texto'], True, (0, 0, 0))
-        pos = eval(config_selecao.data['caixa_buzzer'][self.lingua][0]['pos'])
-        self.imagem_selecao.blit(texto,pos)
+        fonte = pygame.font.Font("comic.ttf", config_selecao.data['caixa_buzzer'][self.lingua]['tamanho'])
+        texto = fonte.render(config_selecao.data['caixa_buzzer'][self.lingua]['texto'], True, (0, 0, 0))
+        self.imagem_selecao.blit(texto,(15,0))
 
         self.selecao_visivel = True
         self.tempo = 0.0
@@ -57,8 +56,7 @@ class caixa_buzzer(caixa):
 
             fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_buzzer'][self.lingua]['tamanho'])
             texto = fonte.render(config_caixa.data['caixa_buzzer'][self.lingua]['texto'], True, (0, 0, 0))
-            pos = eval(config_caixa.data['caixa_buzzer'][self.lingua]['pos'])
-            SCREEN.blit(texto, (self.posicao[0]-posx + pos[0], self.posicao[1] + pos[1]))
+            SCREEN.blit(texto, (self.posicao[0]-posx + 50 - texto.get_width()/2 , self.posicao[1]))
 
             #Texto centralizado do buzzer
             texto = font.render(self.escreve[1:]+"s", True, (0, 0, 0))
@@ -92,6 +90,9 @@ class caixa_buzzer(caixa):
         button_ok = pygame.draw.polygon(SCREEN, (0, 0, 0, 0), list_point)
         SCREEN.blit(self.imagem_selecao, (self.posicao[0]-posx-25, self.posicao[1] + 100))
 
+        fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_buzzer'][self.lingua]['tamanho'])
+        texto = fonte.render(config_caixa.data['caixa_buzzer'][self.lingua]['texto'], True, (0, 0, 0))
+        SCREEN.blit(texto, (self.posicao[0]-posx + 50 - texto.get_width()/2 , self.posicao[1]))
         TELA = SCREEN.copy()
 
         texto = fonte.render(self.escreve[1:], True, (255, 255, 255))
