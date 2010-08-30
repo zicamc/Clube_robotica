@@ -23,7 +23,6 @@ class Palette(object):
         self.imgPalette.add_botao("Imagens/botao_LED.gif","Imagens/LED.gif",(661,217),2)
         self.imgPalette.add_botao("Imagens/botao_toque.gif","Imagens/Toque.gif",(661,319),3)
         self.imgPalette.add_botao("Imagens/botao_buzzer.gif","Imagens/buzzer.gif",(661,400),12)     #TODO: ID DO BUZZER é 12
-
         self.lista_palette.append(self.imgPalette)
 
         #Criando palette vermelha

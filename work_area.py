@@ -24,6 +24,9 @@ class Work_Area(object):
         self.FUNDO = Image("Imagens/work_area.gif",(0,0))
         self.caixa_vazia = Image("Imagens/Caixa.gif",self.posicao_vazia)
         self.setas = [ Image("Imagens/seta_dir.gif",(590,570)), Image("Imagens/seta_esq.gif",(0,570))]
+        self.opcoes = [ Image("Imagens/abrir.gif",(245,540)),   Image("Imagens/salvar.gif",(310,540)),
+                        Image("Imagens/enviar.gif",(375,540))]
+
         self.lista_caixas = [ caixa_inicio() ]
 
         print "Finalizando Work_Area"
@@ -40,6 +43,10 @@ class Work_Area(object):
 
         for i in range(len(self.setas)):
             self.setas[i].show(SCREEN)
+
+        for i in range(len(self.opcoes)):
+            self.opcoes[i].show(SCREEN)
+
 
         self.caixa_vazia.show(SCREEN)
         print "\tFinalizando show_WorkArea <--"
@@ -121,6 +128,18 @@ class Work_Area(object):
                 return 1
 
         return 0
+
+    def teste_botoes(self, posicao):
+        for i in range(len(self.setas)):
+            if self.setas[i].colide(posicao) == 1:
+                return i
+        
+        for a in range(len(self.opcoes)):
+            if self.opcoes[a].colide(posicao) == 1:
+                return a + 2
+        
+        return -1
+
 
     def retorna_posx(self):
         """

@@ -3,8 +3,10 @@
 # and open the template in the editor.
 
 import pygame
+import tkFileDialog
 from palette import Palette
 from work_area import Work_Area
+from serial import Serial_Arduino
 
 class tela(object):
     """
@@ -18,6 +20,7 @@ class tela(object):
         self.SCREEN = pygame.display.set_mode(self.SIZE)
         self.objWorkArea = Work_Area()
         self.objPalette  = Palette()
+        self.objSerial =  Serial_Arduino()
         self.CLOCK = pygame.time.Clock()
 
         #Cria os rects 
@@ -78,22 +81,46 @@ class tela(object):
         """
         for event in pygame.event.get(pygame.MOUSEBUTTONDOWN):
             posicao = event.pos
-            if posicao[1] > 570:
+            if posicao[1] > 540:
+
                 print "Entrei"
-                if posicao[0] < 30:
+                temp = self.objWorkArea.teste_botoes(posicao)
+                print temp
+
+                if temp == 0:
                     posx = self.objWorkArea.retorna_posx()
                     self.objWorkArea.modifica_posx(posx - 50)
                     print "Diminui posx"
                     self.objWorkArea.mostra_workarea(self.SCREEN)
                     self.objPalette.mostra_palette(self.SCREEN)
                     pygame.display.update()
-                elif posicao[0] < 620 and posicao[0] > 590:
+                elif temp == 1:
                     posx = self.objWorkArea.retorna_posx()
                     self.objWorkArea.modifica_posx(posx + 50)
                     print "Aumenta posx"
                     self.objWorkArea.mostra_workarea(self.SCREEN)
                     self.objPalette.mostra_palette(self.SCREEN)
                     pygame.display.update()
+                
+                elif temp == 2:
+                    #Abrir arquivo
+                    #Por enquanto essa é a forma
+                    filename = tkFileDialog.askopenfilename()
+                    print filename # test
+                    pass
+                elif temp == 3:
+                    #Salvar arquivo
+                    pass
+                elif temp == 4:
+                    #Enviar arquivo
+                    teste = self.objSerial.localiza_arduino()
+                    if teste == 0:
+                        pass
+                        #Pega os dados e envia
+                    else:
+                        pass
+                        #Mostra uma msg na tela demonstrando qual foi o ocorrido
+                    pass
 
             elif posicao[0] > 620:
                 temp = self.objPalette.verifica_palette( posicao )
