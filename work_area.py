@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
-
 import pygame
 from imagens import Image
 from caixas.caixa_inicio import caixa_inicio
@@ -91,7 +90,7 @@ class Work_Area(object):
                 caixa.events(SCREEN, self.posicao_x)
             
             self.lista_caixas.append( caixa )
-            self.posicao_vazia = (self.posicao_vazia[0]+150, 150)
+            self.posicao_vazia = (self.posicao_vazia[0]+150, self.posicao_vazia[1])
             self.caixa_vazia = Image("Imagens/Caixa.gif", (self.posicao_vazia[0]-self.posicao_x,self.posicao_vazia[1]))
             if ( self.posicao_vazia[0] - self.posicao_x > 500):
                 self.posicao_x = self.posicao_x + 300
@@ -159,3 +158,69 @@ class Work_Area(object):
         """
         if (posicao >= 0):
             self.posicao_x = posicao
+
+    def gera_programa(self):
+        texto = ""
+
+        for i in range(len(self.lista_caixas)):
+            self.lista_caixas[i].gera_texto()
+            texto += self.lista_caixas[i].retorna_texto()
+            if i != 0:
+                texto += '|'
+        return texto
+
+    def recria_programa(self, PROGRAMA):
+        self.lista_caixas = [ caixa_inicio() ]
+        self.posicao_vazia = (120,150)
+        self.posicao_x = 0
+        i = PROGRAMA.split('|')
+        print i
+
+        for a in range(len(i)-1):
+            prog = i[a].split('-')
+            print prog
+            if (self.recria_caixa(prog[0], prog[1]) != 1):
+                print "ERRROOORRRRR"
+
+        print i
+
+        pass
+
+    def recria_caixa(self,ID,PROG):
+        print ID,PROG
+        print self.lista_caixas
+
+        if ID == '00':
+            temp = caixa_tempo()
+            temp.recria(self.posicao_vazia, PROG)
+
+        elif ID == '01': #O ID 2 Ficou incluido no LED pro apagar do arduino
+            temp = caixa_led()
+            temp.recria(self.posicao_vazia, PROG)
+
+        elif ID == '03':
+            temp = caixa_motor()
+            temp.recria(self.posicao_vazia, PROG)
+
+        elif ID == '04':
+            temp = caixa_buzzer()
+            temp.recria(self.posicao_vazia, PROG)
+       
+        elif ID == '05' or ID == '06':
+            temp = caixa_toque()
+            temp.recria(self.posicao_vazia,ID,PROG)
+
+        elif ID == '07' or ID == '08':
+            temp = caixa_temperatura()
+            temp.recria(self.posicao_vazia,ID,PROG)
+            
+        elif ID == '09' or ID == '10':
+            temp = caixa_luz()
+            temp.recria(self.posicao_vazia,ID,PROG)
+
+        else:
+            return 0
+
+        self.lista_caixas.append(temp)
+        self.posicao_vazia = (self.posicao_vazia[0] + 150, self.posicao_vazia[1])
+        return 1

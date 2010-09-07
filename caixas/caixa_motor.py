@@ -1,29 +1,21 @@
 # -*- coding: utf-8 -*-
-import sys
 import pygame
 import pygame.font
 from caixa import caixa
 from configuracoes import config_caixa
 from configuracoes import config_selecao
-from configuracoes import all_config
 
 pygame.font.init()
-CLOCK = pygame.time.Clock()
-fonte = pygame.font.Font("comic.ttf", 25)
-
 #===============================================================================
 #                   CAIXA MOTOR
 #===============================================================================
-
 class caixa_motor(caixa):
     def __init__(self):
         """ """
+        caixa.__init__(self)
         self.imagem = pygame.image.load("Imagens/Motor.gif").convert()
-        self.rect = 0
-        self.posicao = (0, 0)
-        self.lingua = all_config.data['lingua']
-
         #Cria imagem motor conforme selecao
+
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_motor.gif").convert()
         numero = int(config_selecao.data['caixa_motor']['numero'])
         for i in range(numero):
@@ -33,11 +25,6 @@ class caixa_motor(caixa):
             self.imagem_selecao.blit(texto,pos)
 
         self.opcoes = [False, False, False, False]
-        """ """
-
-    def troca_posicao(self, posicao):
-        """ """
-        self.posicao = posicao
         """ """
 
     def show(self, SCREEN, posx):
@@ -114,8 +101,8 @@ class caixa_motor(caixa):
 
         condicao = False
         while condicao == False:
-            treat_events()
-            CLOCK.tick(15)
+            self.treat_events()
+            self.CLOCK.tick(15)
             for event in pygame.event.get(pygame.MOUSEBUTTONDOWN):
                 if botoes_opcoes[0].collidepoint(event.pos):
                     self.opcoes[0] = not(self.opcoes[0])
@@ -162,28 +149,32 @@ class caixa_motor(caixa):
                     pygame.draw.circle(SCREEN, (0, 0, 0, 0), (self.posicao[0]-posx-21 + opcao4[2] / 2, self.posicao[1] + 200 + opcao4[3] / 2), 5)
                 pygame.display.update((self.posicao[0]-posx-21, self.posicao[1] + 128, 20, 200))
         """ """
+    def gera_texto(self):
+        self.prog_text = ""
+        self.prog_text += ("03-")
+        self.prog_text += str(int(self.opcoes[0]))
+        self.prog_text += str(int(self.opcoes[1]))
+        self.prog_text += str(int(self.opcoes[2]))
+        self.prog_text += str(int(self.opcoes[3]))
 
-    def colide(self, pos):
-        """ """
-        try:
-            return self.rect.collidepoint(pos)
-        except:
-            return 0
-        """ """
+    def recria(self,pos,PROG):
+        self.posicao = pos
+        self.opcoes[0] = bool(int(PROG[0]))
+        self.opcoes[1] = bool(int(PROG[1]))
+        self.opcoes[2] = bool(int(PROG[2]))
+        self.opcoes[3] = bool(int(PROG[3]))
 
-    def retorna_pos(self):
-        """ """
-        return self.posicao
-        """ """
-
-
-def treat_events():
-    """
-    Função que verifica se algo aconteceu para que o programa se feche. Aqui por preguica, nao tava afim de faze um import!
-    """
-    # Criar uma thread para isso
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:                                           sys.exit()
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:     sys.exit()
-
-    """ """
+    def gera_programa(self):
+        self.prog_arduino = ""
+        if self.opcoes[0] == True:
+            self.prog_arduino += chr(3)
+            self.prog_arduino += chr(0)
+        elif self.opcoes[1] == True:
+            self.prog_arduino += chr(3)
+            self.prog_arduino += chr(1)
+        elif self.opcoes[2] == True:
+            self.prog_arduino += chr(3)
+            self.prog_arduino += chr(2)
+        elif self.opcoes[3] == True:
+            self.prog_arduino += chr(1)
+            self.prog_arduino += chr(3)

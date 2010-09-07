@@ -1,25 +1,20 @@
 # -*- coding: utf-8 -*-
-import sys
 import pygame
 import pygame.font
 from caixa import caixa
 from configuracoes import config_caixa
 from configuracoes import config_selecao
-from configuracoes import all_config
 
 pygame.font.init()
-CLOCK = pygame.time.Clock()
-fonte = pygame.font.Font("comic.ttf", 25)
+
 #===============================================================================
 #                   CAIXA LED
 #===============================================================================
 class caixa_led(caixa):
     def __init__(self):
-        self.imagem = pygame.image.load("Imagens/LED.gif").convert()
-        self.rect = 0
-        self.posicao = (0, 0)
-        self.lingua = all_config.data['lingua']
+        caixa.__init__(self)
 
+        self.imagem = pygame.image.load("Imagens/LED.gif").convert()
         self.imagem_selecao = pygame.image.load("Imagens/Caixa_led.gif").convert()
         numero = int(config_selecao.data['caixa_led']['numero'])
         for i in range(numero):
@@ -30,11 +25,6 @@ class caixa_led(caixa):
 
         self.opcoes = [True, False]
         self.leds = [False, False, False]
-        """ """
-
-    def troca_posicao(self, posicao):
-        """ """
-        self.posicao = posicao
         """ """
 
     def show(self, SCREEN, posx):
@@ -119,8 +109,8 @@ class caixa_led(caixa):
 
         condicao = False
         while condicao == False:
-            treat_events()
-            CLOCK.tick(15)
+            self.treat_events()
+            self.CLOCK.tick(15)
             for event in pygame.event.get(pygame.MOUSEBUTTONDOWN):
                 if event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -175,30 +165,39 @@ class caixa_led(caixa):
 
                     pygame.display.update((self.posicao[0]-posx-16, self.posicao[1] + 128, 20, 200))
 
-        """ """
+        """
+        """
+    def gera_texto(self):
+        self.prog_text = ""
+        self.prog_text += ("01-")
+        self.prog_text += str(int(self.opcoes[0]))
+        self.prog_text += str(int(self.opcoes[1]))
+        self.prog_text += str(int(self.leds[0]))
+        self.prog_text += str(int(self.leds[1]))
+        self.prog_text += str(int(self.leds[2]))
 
+    def recria(self,pos,prog):
+        self.posicao = pos
+        self.opcoes[0] = bool(int(prog[0]))
+        self.opcoes[1] = bool(int(prog[1]))
+        self.leds[0] = bool(int(prog[2]))
+        self.leds[1] = bool(int(prog[3]))
+        self.leds[2] = bool(int(prog[4]))
 
-    def colide(self, pos):
-        """ """
-        try:
-            return self.rect.collidepoint(pos)
-        except:
-            return 0
-        """ """
+    def gera_programa(self):
+        self.prog_arduino = ""
 
-    def retorna_pos(self):
-        """ """
-        return self.posicao
-        """ """
+        if self.opcoes[0] == True:
+            temp = 1
+        else:
+            temp = 2
 
-
-def treat_events():
-    """
-    Função que verifica se algo aconteceu para que o programa se feche. Aqui por preguica, nao tava afim de faze um import!
-    """
-    # Criar uma thread para isso
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:                                           sys.exit()
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:     sys.exit()
-
-    """ """
+        if self.leds[0] == True:
+            self.prog_arduino += chr(temp)
+            self.prog_arduino += chr(0)
+        if self.leds[1] == True:
+            self.prog_arduino += chr(temp)
+            self.prog_arduino += chr(1)
+        if self.leds[2] == True:
+            self.prog_arduino += chr(temp)
+            self.prog_arduino += chr(2)

@@ -3,10 +3,10 @@
 # and open the template in the editor.
 
 import pygame
-import tkFileDialog
 from palette import Palette
 from work_area import Work_Area
 from serial import Serial_Arduino
+from arquivos import Arquivos
 
 class tela(object):
     """
@@ -22,6 +22,7 @@ class tela(object):
         self.objPalette  = Palette()
         self.objSerial =  Serial_Arduino()
         self.CLOCK = pygame.time.Clock()
+        self.file = Arquivos()
 
         #Cria os rects 
         print "Lista de rects criados para a palette:"
@@ -82,45 +83,9 @@ class tela(object):
         for event in pygame.event.get(pygame.MOUSEBUTTONDOWN):
             posicao = event.pos
             if posicao[1] > 540:
-
-                print "Entrei"
                 temp = self.objWorkArea.teste_botoes(posicao)
-                print temp
-
-                if temp == 0:
-                    posx = self.objWorkArea.retorna_posx()
-                    self.objWorkArea.modifica_posx(posx - 50)
-                    print "Diminui posx"
-                    self.objWorkArea.mostra_workarea(self.SCREEN)
-                    self.objPalette.mostra_palette(self.SCREEN)
-                    pygame.display.update()
-                elif temp == 1:
-                    posx = self.objWorkArea.retorna_posx()
-                    self.objWorkArea.modifica_posx(posx + 50)
-                    print "Aumenta posx"
-                    self.objWorkArea.mostra_workarea(self.SCREEN)
-                    self.objPalette.mostra_palette(self.SCREEN)
-                    pygame.display.update()
-                
-                elif temp == 2:
-                    #Abrir arquivo
-                    #Por enquanto essa é a forma
-                    filename = tkFileDialog.askopenfilename()
-                    print filename # test
-                    pass
-                elif temp == 3:
-                    #Salvar arquivo
-                    pass
-                elif temp == 4:
-                    #Enviar arquivo
-                    teste = self.objSerial.localiza_arduino()
-                    if teste == 0:
-                        pass
-                        #Pega os dados e envia
-                    else:
-                        pass
-                        #Mostra uma msg na tela demonstrando qual foi o ocorrido
-                    pass
+                if temp != -1:
+                    self.botoes_Tela(temp)
 
             elif posicao[0] > 620:
                 temp = self.objPalette.verifica_palette( posicao )
@@ -149,3 +114,45 @@ class tela(object):
                         self.objWorkArea.mostra_workarea(self.SCREEN)
                         self.objPalette.mostra_palette(self.SCREEN)
                         pygame.display.update()
+
+    def botoes_Tela(self, temp):
+        if temp == 0:
+            posx = self.objWorkArea.retorna_posx()
+            self.objWorkArea.modifica_posx(posx - 50)
+            print "Diminui posx"
+            self.objWorkArea.mostra_workarea(self.SCREEN)
+            self.objPalette.mostra_palette(self.SCREEN)
+            pygame.display.update()
+        elif temp == 1:
+            posx = self.objWorkArea.retorna_posx()
+            self.objWorkArea.modifica_posx(posx + 50)
+            print "Aumenta posx"
+            self.objWorkArea.mostra_workarea(self.SCREEN)
+            self.objPalette.mostra_palette(self.SCREEN)
+            pygame.display.update()
+
+        elif temp == 2:
+            if self.file.askOpenOk() == 1:
+                programa = self.file.openFile()
+                self.objWorkArea.recria_programa(programa)
+                self.objWorkArea.mostra_workarea(self.SCREEN)
+                self.objPalette.mostra_palette(self.SCREEN)
+                pygame.display.update()
+                #Gera apartir do texto o programa
+
+        elif temp == 3:
+            text = self.objWorkArea.gera_programa()
+            print text
+
+            self.file.saveFile(text)
+
+        elif temp == 4:
+            #Enviar arquivo
+            teste = self.objSerial.localiza_arduino()
+            if teste == 0:
+                pass
+                #Pega os dados e envia
+            else:
+                pass
+                #Mostra uma msg na tela demonstrando qual foi o ocorrido
+            pass
