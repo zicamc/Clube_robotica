@@ -166,6 +166,7 @@ class caixa_temperatura(caixa):
 
         self.tempo = tempo
         self.escreve = '0'+str(tempo)
+        self.tempo = float(tempo)
 
     def gera_programa(self):
 

@@ -107,6 +107,8 @@ class caixa_buzzer(caixa):
         self.escreve = tempo
         self.posicao = pos
         self.escreve = '0'+str(tempo)
+        self.tempo = float(tempo)
+
 
     def gera_texto(self):
         self.prog_text = ""

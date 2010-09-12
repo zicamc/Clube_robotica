@@ -3,6 +3,7 @@
 # and open the template in the editor.
 
 import pygame
+from caixas.configuracoes import *
 from palette import Palette
 from work_area import Work_Area
 from serial import Serial_Arduino
@@ -16,7 +17,7 @@ class tela(object):
 
     def __init__(self):
         #Variáveis para criação da tela
-        self.SIZE = 800, 600
+        self.SIZE = eval( all_config.data["tamanho_tela"])
         self.SCREEN = pygame.display.set_mode(self.SIZE)
         self.objWorkArea = Work_Area()
         self.objPalette  = Palette()
@@ -156,3 +157,4 @@ class tela(object):
                 pass
                 #Mostra uma msg na tela demonstrando qual foi o ocorrido
             pass
+

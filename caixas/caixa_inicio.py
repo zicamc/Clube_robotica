@@ -2,6 +2,7 @@
 import pygame
 import pygame.font
 from configuracoes import config_caixa
+from configuracoes import all_config
 from caixa import caixa
 pygame.font.init()
 
@@ -14,7 +15,7 @@ class caixa_inicio(caixa):
 
         """
         caixa.__init__(self)
-        self.posicao = (20, 150)
+        self.posicao = (20, int(all_config.data["altura_caixas"]))
         self.imagem = pygame.image.load("Imagens/Inicio.gif").convert()
 
         fonte = pygame.font.Font("comic.ttf", config_caixa.data['caixa_inicio'][self.lingua]['tamanho'])

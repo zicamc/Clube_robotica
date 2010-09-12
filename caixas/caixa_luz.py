@@ -151,7 +151,7 @@ class caixa_luz(caixa):
             self.prog_text = "10-"
 
         self.prog_text += str(self.tempo)
-
+        
     def recria(self,pos,ID,tempo):
 
         self.posicao = pos
@@ -161,8 +161,10 @@ class caixa_luz(caixa):
         else:
             self.opcoes[0] = False
             self.opcoes[1] = True
+            
         self.tempo = tempo
         self.escreve = '0'+str(tempo)
+        self.tempo = float(tempo)
 
     def gera_programa(self):
 

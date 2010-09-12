@@ -11,6 +11,7 @@ from caixas.caixa_tempo import caixa_tempo
 from caixas.caixa_toque import caixa_toque
 from caixas.caixa_temperatura import caixa_temperatura
 from caixas.caixa_buzzer import caixa_buzzer
+from caixas.configuracoes import all_config
 
 class Work_Area(object):
     def __init__(self):
@@ -18,13 +19,22 @@ class Work_Area(object):
 
         """
         print "Iniciando Work_Area"
+
+        pos = eval(all_config.data["tamanho_tela"])
+
         self.posicao_x = 0
-        self.posicao_vazia = (120,150)
+        self.posicao_vazia = (120, int(all_config.data["altura_caixas"]) )
         self.FUNDO = Image("Imagens/work_area.gif",(0,0))
         self.caixa_vazia = Image("Imagens/Caixa.gif",self.posicao_vazia)
-        self.setas = [ Image("Imagens/seta_dir.gif",(590,570)), Image("Imagens/seta_esq.gif",(0,570))]
-        self.opcoes = [ Image("Imagens/abrir.gif",(245,540)),   Image("Imagens/salvar.gif",(310,540)),
-                        Image("Imagens/enviar.gif",(375,540))]
+
+        pos = eval(all_config.data["tamanho_tela"])
+        posicao_setas = pos[1] - 30
+        
+        self.setas = [ Image("Imagens/seta_dir.gif",(590,posicao_setas)), Image("Imagens/seta_esq.gif",(0,posicao_setas))]
+
+        posicao_opcoes = pos[1] - 60
+        self.opcoes = [ Image("Imagens/abrir.gif",(245, posicao_opcoes)),   Image("Imagens/salvar.gif",(310, posicao_opcoes)),
+                        Image("Imagens/enviar.gif",(375, posicao_opcoes))]
 
         self.lista_caixas = [ caixa_inicio() ]
 
